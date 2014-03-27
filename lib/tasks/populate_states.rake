@@ -1,0 +1,32 @@
+# encoding: utf-8
+
+desc "Populate states"
+task :populate_states => [:environment] do
+    Addresses::State.create(id: '28', name: 'Acre', acronym: 'AC', country_id: 33)
+    Addresses::State.create(id: '29', name: 'Alagoas', acronym: 'AL', country_id: 33)
+    Addresses::State.create(id: '30', name: 'Amazonas', acronym: 'AM', country_id: 33)
+    Addresses::State.create(id: '31', name: 'Amapá', acronym: 'AP', country_id: 33)
+    Addresses::State.create(id: '32', name: 'Bahia', acronym: 'BA', country_id: 33)
+    Addresses::State.create(id: '33', name: 'Ceará', acronym: 'CE', country_id: 33)
+    Addresses::State.create(id: '34', name: 'Brasília', acronym: 'DF', country_id: 33)
+    Addresses::State.create(id: '35', name: 'Espírito Santo', acronym: 'ES', country_id: 33)
+    Addresses::State.create(id: '36', name: 'Goiás', acronym: 'GO', country_id: 33)
+    Addresses::State.create(id: '37', name: 'Maranhão', acronym: 'MA', country_id: 33)
+    Addresses::State.create(id: '38', name: 'Minas Gerais', acronym: 'MG', country_id: 33)
+    Addresses::State.create(id: '39', name: 'Mato Grosso do Sul', acronym: 'MS', country_id: 33)
+    Addresses::State.create(id: '40', name: 'Mato Grosso', acronym: 'MT', country_id: 33)
+    Addresses::State.create(id: '41', name: 'Pará', acronym: 'PA', country_id: 33)
+    Addresses::State.create(id: '42', name: 'Paraíba', acronym: 'PB', country_id: 33)
+    Addresses::State.create(id: '43', name: 'Pernambuco', acronym: 'PE', country_id: 33)
+    Addresses::State.create(id: '44', name: 'Piauí', acronym: 'PI', country_id: 33)
+    Addresses::State.create(id: '45', name: 'Paraná', acronym: 'PR', country_id: 33)
+    Addresses::State.create(id: '46', name: 'Rio de Janeiro', acronym: 'RJ', country_id: 33)
+    Addresses::State.create(id: '47', name: 'Rio Grande do Norte', acronym: 'RN', country_id: 33)
+    Addresses::State.create(id: '48', name: 'Rondônia', acronym: 'RO', country_id: 33)
+    Addresses::State.create(id: '49', name: 'Roraima', acronym: 'RR', country_id: 33)
+    Addresses::State.create(id: '50', name: 'Rio Grande do Sul', acronym: 'RS', country_id: 33)
+    Addresses::State.create(id: '51', name: 'Santa Catarina', acronym: 'SC', country_id: 33)
+    Addresses::State.create(id: '52', name: 'Sergipe', acronym: 'SE', country_id: 33)
+    Addresses::State.create(id: '53', name: 'São Paulo', acronym: 'SP', country_id: 33)
+    Addresses::State.create(id: '54', name: 'Tocantins', acronym: 'TO', country_id: 33)
+end

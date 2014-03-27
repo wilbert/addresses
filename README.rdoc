@@ -1,0 +1,24 @@
+= Addresses
+
+This project rocks and uses MIT-LICENSE.
+
+It allows you use these models:
+
+Country
+State (belongs to country)
+City (belongs to State)
+Neighborhood (belongs to city)
+
+== Installation
+
+Add this code to your Gemfile:
+
+    gem 'addresses', git: ''
+
+After this, add this line to your routes:
+
+    mount Addresses::Engine => "/addresses"
+
+If you want populate Contries, States (Brazilian only), Cities (Brazilian only) and Neighborhoods (Brazilian only) use this command:
+
+    rake addresses

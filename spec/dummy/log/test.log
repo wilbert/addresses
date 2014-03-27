@@ -1,0 +1,288 @@
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+Processing by Addresses::CitiesController#index as HTML
+  Rendered /Users/wilbert/apps/addresses/app/views/addresses/cities/index.html.erb within layouts/addresses/application (0.2ms)
+Completed 200 OK in 9ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+Processing by Addresses::CitiesController#index as HTML
+  Rendered /Users/wilbert/apps/addresses/app/views/addresses/cities/index.html.erb within layouts/addresses/application (0.2ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+Processing by Addresses::CitiesController#index as HTML
+  Rendered /Users/wilbert/apps/addresses/app/views/addresses/cities/index.html.erb within layouts/addresses/application (0.2ms)
+Completed 200 OK in 8ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAddressesCountries (20140327144030)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "addresses_countries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "acronym" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAddressesCountries (20140327144030)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "addresses_countries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "acronym" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (7.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAddressesCountries (20140327205948)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "addresses_countries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "acronym" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140327205948"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAddressesStates (20140327205949)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "addresses_states" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "acronym" varchar(255), "country_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_addresses_states_on_country_id" ON "addresses_states" ("country_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140327205949"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateAddressesCities (20140327205950)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "addresses_cities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "state_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_addresses_cities_on_state_id" ON "addresses_cities" ("state_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140327205950"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAddressesNeighborhoods (20140327205951)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "addresses_neighborhoods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "city_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_addresses_neighborhoods_on_city_id" ON "addresses_neighborhoods" ("city_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140327205951"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (0.5ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (5.4ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:00:39 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:00:39 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (6.7ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:00:39 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:00:39 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.5ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:01:02 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:01:02 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (6.8ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.6ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:01:18 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:01:18 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:01:18 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:01:18 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Addresses::CitiesController#index as HTML
+  Parameters: {"state_id"=>"1"}
+  Rendered /Users/wilbert/apps/addresses/app/views/addresses/cities/index.html.erb within layouts/addresses/application (0.2ms)
+Completed 200 OK in 8ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:01:18 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:01:18 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:01:18 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:01:18 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Addresses::CitiesController#index as HTML
+  Parameters: {"state_id"=>"1"}
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (5.1ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:01:32 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:01:32 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:01:32 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:01:32 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Addresses::CitiesController#index as HTML
+  Parameters: {"state_id"=>"1"}
+  Rendered /Users/wilbert/apps/addresses/app/views/addresses/cities/index.html.erb within layouts/addresses/application (0.3ms)
+Completed 200 OK in 11ms (Views: 11.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (6.6ms)[0m  rollback transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.4ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:02:41 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:02:41 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:02:41 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:02:41 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Addresses::CitiesController#index as HTML
+  Parameters: {"state_id"=>"1"}
+  [1m[35mAddresses::State Load (0.1ms)[0m  SELECT "addresses_states".* FROM "addresses_states" WHERE "addresses_states"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered /Users/wilbert/apps/addresses/app/views/addresses/cities/index.html.erb within layouts/addresses/application (0.3ms)
+Completed 200 OK in 25ms (Views: 9.1ms | ActiveRecord: 0.1ms)
+  [1m[36mAddresses::City Load (0.2ms)[0m  [1mSELECT "addresses_cities".* FROM "addresses_cities" WHERE "addresses_cities"."state_id" = ?[0m  [["state_id", 1]]
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.6ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:02:53 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:02:53 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:02:53 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:02:53 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Addresses::CitiesController#index as HTML
+  Parameters: {"state_id"=>"1"}
+  [1m[35mAddresses::State Load (0.2ms)[0m  SELECT "addresses_states".* FROM "addresses_states" WHERE "addresses_states"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered /Users/wilbert/apps/addresses/app/views/addresses/cities/index.html.erb within layouts/addresses/application (0.2ms)
+Completed 200 OK in 22ms (Views: 7.7ms | ActiveRecord: 0.2ms)
+  [1m[36mAddresses::City Load (0.2ms)[0m  [1mSELECT "addresses_cities".* FROM "addresses_cities" WHERE "addresses_cities"."state_id" = ?[0m  [["state_id", 1]]
+  [1m[35m (6.7ms)[0m  rollback transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.7ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:03:03 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:03:03 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:03:03 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:03:03 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Addresses::CitiesController#index as HTML
+  Parameters: {"state_id"=>"1"}
+  [1m[35mAddresses::State Load (0.1ms)[0m  SELECT "addresses_states".* FROM "addresses_states" WHERE "addresses_states"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered /Users/wilbert/apps/addresses/app/views/addresses/cities/index.html.erb within layouts/addresses/application (0.2ms)
+Completed 200 OK in 20ms (Views: 7.4ms | ActiveRecord: 0.1ms)
+  [1m[36m (6.7ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:03:03 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:03:03 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Thu, 27 Mar 2014 21:03:03 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:03:03 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Addresses::CitiesController#index as HTML
+  Parameters: {"state_id"=>"1"}
+  [1m[36mAddresses::State Load (0.1ms)[0m  [1mSELECT "addresses_states".* FROM "addresses_states" WHERE "addresses_states"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.1ms)
+  [1m[35mAddresses::City Load (0.2ms)[0m  SELECT "addresses_cities".* FROM "addresses_cities" WHERE "addresses_cities"."state_id" = ?  [["state_id", 1]]
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (5.3ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:11:44 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:11:44 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:11:44 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:11:44 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (8.4ms)[0m  rollback transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.8ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:13:16 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:13:16 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:13:16 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:13:16 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (6.8ms)[0m  rollback transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.4ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:13:53 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:13:53 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:13:54 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:13:54 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (6.6ms)[0m  rollback transaction
+  [1m[36m (0.5ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (6.3ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:17:17 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:17:17 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:17:17 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:17:17 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (6.4ms)[0m  rollback transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.9ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:17:26 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:17:26 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:17:26 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:17:26 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/addresses/cities?state_id=1" for 127.0.0.1 at 2014-03-27 18:17:26 -0300
+Processing by Addresses::CitiesController#index as HTML
+  Parameters: {"state_id"=>"1"}
+  [1m[35mAddresses::State Load (0.2ms)[0m  SELECT "addresses_states".* FROM "addresses_states" WHERE "addresses_states"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 406 Not Acceptable in 15ms
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.6ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (5.3ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:17:42 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:17:42 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:17:42 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:17:42 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/addresses/cities.JSON?state_id=1" for 127.0.0.1 at 2014-03-27 18:17:42 -0300
+Processing by Addresses::CitiesController#index as 
+  Parameters: {"state_id"=>"1"}
+  [1m[35mAddresses::State Load (0.2ms)[0m  SELECT "addresses_states".* FROM "addresses_states" WHERE "addresses_states"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 406 Not Acceptable in 14ms
+  [1m[36m (6.7ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.4ms)[0m  [1mINSERT INTO "addresses_states" ("acronym", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["acronym", "MyString"], ["created_at", Thu, 27 Mar 2014 21:18:01 UTC +00:00], ["name", "MyString"], ["updated_at", Thu, 27 Mar 2014 21:18:01 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "addresses_cities" ("created_at", "name", "state_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Thu, 27 Mar 2014 21:18:01 UTC +00:00], ["name", "MyString"], ["state_id", 1], ["updated_at", Thu, 27 Mar 2014 21:18:01 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/addresses/cities?format=json&state_id=1" for 127.0.0.1 at 2014-03-27 18:18:01 -0300
+Processing by Addresses::CitiesController#index as JSON
+  Parameters: {"state_id"=>"1"}
+  [1m[35mAddresses::State Load (0.2ms)[0m  SELECT "addresses_states".* FROM "addresses_states" WHERE "addresses_states"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mAddresses::City Load (0.2ms)[0m  [1mSELECT "addresses_cities".* FROM "addresses_cities" WHERE "addresses_cities"."state_id" = ?[0m  [["state_id", 1]]
+Completed 200 OK in 52ms (Views: 2.0ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
