@@ -4,16 +4,16 @@ This project rocks and uses MIT-LICENSE.
 
 It allows you use these models:
 
-Country
-State (belongs to country)
-City (belongs to State)
-Neighborhood (belongs to city)
+* Country
+* State (belongs to country)
+* City (belongs to State)
+* Neighborhood (belongs to city)
 
 == Installation
 
 Add this code to your Gemfile:
 
-    gem 'addresses', git: ''
+    gem 'addresses', git: 'https://github.com/wilbert/addresses'
 
 After this, add this line to your routes:
 
