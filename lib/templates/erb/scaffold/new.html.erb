@@ -1,0 +1,9 @@
+<%%= title t("new_<%= singular_table_name %>") %>
+
+<%% content_for :right do -%>
+	<li class="active">
+		<%%= link_to t(:back), <%= index_helper %>_path %>
+	</li>
+<%% end -%>
+
+<%%= render 'form' %>

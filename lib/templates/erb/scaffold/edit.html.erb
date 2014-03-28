@@ -1,0 +1,12 @@
+<%%= title t(:editing, model: t("<%= singular_table_name %>", scope: "activerecord.models"))  %>
+
+<%% content_for :right do -%>
+	<li class="active">
+		<%%= link_to t(:details), @<%= singular_table_name %> %>
+	</li>
+	<li class="active">
+		<%%= link_to t(:back), <%= index_helper %>_path %>
+	</li>
+<%% end -%>
+
+<%%= render 'form' %>

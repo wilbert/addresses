@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327205951) do
+ActiveRecord::Schema.define(version: 20140328120544) do
+
+  create_table "addresses_addresses", force: true do |t|
+    t.string   "street"
+    t.string   "number"
+    t.string   "complement"
+    t.integer  "city_id"
+    t.integer  "neighborhood_id"
+    t.string   "zipcode"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses_addresses", ["city_id"], name: "index_addresses_addresses_on_city_id"
+  add_index "addresses_addresses", ["neighborhood_id"], name: "index_addresses_addresses_on_neighborhood_id"
 
   create_table "addresses_cities", force: true do |t|
     t.string   "name"

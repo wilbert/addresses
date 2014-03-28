@@ -1,0 +1,17 @@
+<%%= title t("<%= singular_table_name %>") %>
+
+<%% content_for :right do -%>
+	<li class="active">
+		<%%= link_to t(:edit), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %>
+	</li>
+	<li class="active">
+		<%%= link_to t(:back), <%= index_helper %>_path %>
+	</li>
+<%% end -%>
+
+<% attributes.each do |attribute| -%>
+	<p>
+	  <small><%%= t(:<%= attribute.name %>, scope: "activerecord.attributes.<%= singular_table_name %>") %>:</small>
+	  <h3><%%= @<%= singular_table_name %>.<%= attribute.name %> %></h3>
+	</p>
+<% end -%>
