@@ -8,6 +8,7 @@ It allows you use these models:
 * State (belongs to country)
 * City (belongs to State)
 * Neighborhood (belongs to city)
+* Address (Belongs to Neighborhood and City, because neighbordhood is not required)
 
 == Installation
 
@@ -31,3 +32,14 @@ If you want populate Contries, States (Brazilian only), Cities (Brazilian only) 
 Now you can test in console if everything are working:
     
     Addresses::Contry.count
+
+Use these models in your project as: 
+
+    address = Addresses::Address.new
+    address.street = "Street name"
+    address.number = "Number"
+    address.complement = "Complement of address"
+    address.zipcode = "zipcode"
+    address.city = Address::City.find(city_id)
+    address.neighborhood = Address::Neighborhood.find(neighborhood_id)
+    address.save
