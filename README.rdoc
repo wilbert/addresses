@@ -8,7 +8,7 @@ It allows you use these models:
 * State (belongs to country)
 * City (belongs to State)
 * Neighborhood (belongs to city)
-* Address (Belongs to Neighborhood and City, because neighbordhood is not required)
+* Address (Belongs to Neighborhood and City, because neighborhood is not required)
 
 == Installation
 
