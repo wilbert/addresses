@@ -7,8 +7,8 @@ require "addresses/version"
 Gem::Specification.new do |s|
   s.name        = "addresses"
   s.version     = Addresses::VERSION
-  s.authors     = ["Wilbert Ribeiro"]
-  s.email       = ["wkelyson@gmail.com"]
+  s.authors     = ["Wilbert Ribeiro", "Michel Azevedo"]
+  s.email       = ["wkelyson@gmail.com", "michel.azevedos@gmail.com"]
   s.homepage    = "http://www.github.com/wilbert/addresses"
   s.summary     = "This engine allows create default addresses models for any usage."
   s.description = "Create Countr, State, City, Neighborhood and a polymorphic model called Address that can be related as addessable."
