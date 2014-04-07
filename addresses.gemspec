@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["wkelyson@gmail.com", "michel.azevedos@gmail.com"]
   s.homepage    = "http://www.github.com/wilbert/addresses"
   s.summary     = "This engine allows create default addresses models for any usage."
-  s.description = "Create Countr, State, City, Neighborhood and a polymorphic model called Address that can be related as addessable."
+  s.description = "Create Country, State, City, Neighborhood and a polymorphic model called Address that can be related as addessable."
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
   s.licenses    = ['MIT']
