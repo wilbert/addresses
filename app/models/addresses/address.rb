@@ -11,7 +11,7 @@ module Addresses
         after_find :after_find
 
         def to_s
-            "#{self.street}, #{self.number}, #{self.neighborhood}. #{self.city.name} - #{self.city.state.abbreviation}"
+            "#{self.street}, #{self.number}, #{self.neighborhood}. #{self.city.name} - #{self.city.state.acronym}"
         end
 
         private
