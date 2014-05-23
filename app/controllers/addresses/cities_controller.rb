@@ -7,7 +7,7 @@ module Addresses
     def index
         @state = State.find(params[:state_id])
         
-        @cities = @state.cities
+        @cities = @state.cities.order("name asc")
 
         respond_with @cities
     end

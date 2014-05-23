@@ -13,3 +13,5 @@ gemspec
 # To use debugger
 # gem 'debugger'
 gem 'sqlite3'
+gem 'rspec-rails'
+gem 'factory_girl_rails'

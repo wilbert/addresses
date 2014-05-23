@@ -7,6 +7,9 @@ require 'factory_girl_rails'
 
 Rails.backtrace_cleaner.remove_silencers!
 
+FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
+FactoryGirl.find_definitions
+
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 RSpec.configure do |config|
