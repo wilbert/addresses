@@ -1,3 +1,3 @@
 module Addresses
-  VERSION = "0.0.7-RC4"
+  VERSION = "0.0.7"
 end
