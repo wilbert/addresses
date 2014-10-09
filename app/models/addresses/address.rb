@@ -8,16 +8,16 @@ module Addresses
 
         validates :zipcode, :number, :city_id, :state_id, presence: true
 
-        after_find :after_find
+        after_find :set_state_id
+        before_validation :set_state_id
 
         def to_s
             "#{self.street}, #{self.number}, #{self.neighborhood}. #{self.city.name} - #{self.city.state.acronym}"
         end
 
         private
-        # => Used to fill state_id
-        def after_find
-            self.state_id = self.city.state.id unless self.city.nil?
+        def set_state_id
+          self.state_id = self.city.state.id unless self.city.nil?
         end
     end
 end
