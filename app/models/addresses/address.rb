@@ -12,7 +12,7 @@ module Addresses
         before_validation :set_state_id
 
         def to_s
-            "#{self.street}, #{self.number}, #{self.neighborhood}. #{self.city.name} - #{self.city.state.acronym}"
+            "#{self.street}, #{self.number}, #{self.neighborhood.name}. #{self.city.name} - #{self.city.state.acronym}"
         end
 
         private
