@@ -1,2 +1,4 @@
 <h1>Cities#index</h1>
 <p>Find me in app/views/addresses/cities/index.html.erb</p>
+
+<%= autocomplete_field_tag 'city', '', autocomplete_city_name_cities_path, update_elements:{ state_name:'#customer_state'} %>
