@@ -54,3 +54,9 @@ Use these models in your project as:
 1. Add into file my_app/app/assets/stylesheets/application.css.scss
 
     @import 'jquery-ui/autocomplete';
+
+    or 
+
+    /*
+     *= require jquery-ui
+     */
