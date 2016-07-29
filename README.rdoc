@@ -22,7 +22,7 @@ After this, add this line to your routes:
 
 Copy migrations to your project and execute than to create tables in your database:
     
-    rake addresses:install:migrations
+    rake addresses:install:migrate
     rake db:migrate
 
 If you want populate Contries, States (Brazilian only), Cities (Brazilian only) and Neighborhoods (Brazilian only) use this command:
@@ -43,3 +43,14 @@ Use these models in your project as:
     address.city = Address::City.find(city_id)
     address.neighborhood = Address::Neighborhood.find(neighborhood_id)
     address.save
+
+=== Using autocomplete field
+
+1. Add into file my_app/app/assets/javascripts/application.js
+
+    //= require jquery-ui/autocomplete
+    //= require autocomplete-rails
+
+1. Add into file my_app/app/assets/stylesheets/application.css.scss
+
+    @import 'jquery-ui/autocomplete';
