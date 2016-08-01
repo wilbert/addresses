@@ -3,9 +3,7 @@ module Addresses
     belongs_to :state
     has_many :neighborhoods
 
-    # scope :autocomplete, -> { joins(:state) }
-
-    def city_and_state
+    def label_autocomplete_for_city
       "#{name}/#{state_acronym}"
     end
 
@@ -16,7 +14,7 @@ module Addresses
     def state_name
       state.name
     end
-    
+
     def state_acronym
       state.acronym
     end
