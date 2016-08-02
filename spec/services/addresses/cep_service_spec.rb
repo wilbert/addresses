@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Addresses
-  describe CepService do
+  describe CepService, :vcr do
     describe '.find' do
       let(:cep){ '02556180' }
       # let(:result_json){

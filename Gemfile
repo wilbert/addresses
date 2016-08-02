@@ -19,4 +19,7 @@ gem 'factory_girl_rails', '4.4.0'
 group :development, :test do
   gem 'pry-rails', '0.3.4'
   gem 'pry-nav'
+  gem 'webmock'
+  gem 'vcr'
+  gem 'simplecov', :require => false
 end
