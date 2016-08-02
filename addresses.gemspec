@@ -17,10 +17,10 @@ Gem::Specification.new do |s|
   s.licenses    = ['MIT']
   
   s.add_dependency 'rails', '~> 4.0'
-  s.add_dependency 'rails4-autocomplete'
   s.add_dependency 'jquery-ui-rails'
+  s.add_dependency 'rails4-autocomplete'
 
   s.add_development_dependency 'sqlite3', '1.3.9'
-  s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'factory_girl_rails'
+  s.add_development_dependency 'rspec-rails', '2.14.2'
+  s.add_development_dependency 'factory_girl_rails', '4.4.0'
 end

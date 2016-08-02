@@ -22,7 +22,7 @@ After this, add this line to your routes:
 
 Copy migrations to your project and execute than to create tables in your database:
     
-    rake addresses:install:migrate
+    rake addresses:install:migrations
     rake db:migrate
 
 If you want populate Contries, States (Brazilian only), Cities (Brazilian only) and Neighborhoods (Brazilian only) use this command:
