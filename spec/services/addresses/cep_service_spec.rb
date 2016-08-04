@@ -9,7 +9,7 @@ module Addresses
       # }
 
       subject { described_class.find(cep) }
-      it { expect(subject).to be_kind_of(Hash) }
+      it { expect(subject).to be_kind_of(Addresses::CepService) }
     end
 
     describe '.new' do

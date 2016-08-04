@@ -1,7 +1,12 @@
 require 'rails4-autocomplete'
 require 'jquery-ui-rails'
 require 'addresses/plugins/form_helper'
-require 'addresses/plugins/simple_form_plugin'
+
+begin
+  require 'simple_form'
+  require 'addresses/plugins/simple_form_plugin'
+rescue LoadError
+end
 
 module Addresses
   class Engine < ::Rails::Engine

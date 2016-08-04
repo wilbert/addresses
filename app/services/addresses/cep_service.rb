@@ -22,9 +22,13 @@ module Addresses
       @attr = @attr.symbolize_keys rescue nil
     end
 
+    def attr
+      @attr ||= self.to_h
+    end
+
     def address_full
       if valid?
-        MASK_FULL % @attr
+        MASK_FULL % attr
       else
         ''
       end
@@ -32,7 +36,7 @@ module Addresses
 
     def address
       if valid?
-        MASK % @attr 
+        MASK % attr 
       else
         ''
       end
