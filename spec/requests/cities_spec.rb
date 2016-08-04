@@ -4,8 +4,8 @@ describe Addresses::CitiesController do
   #routes { Addresses::Engine.routes }
   
   before (:each) do
-    @state = FactoryGirl.create(:addresses_state)
-    @city = FactoryGirl.create(:addresses_city, state: @state)
+    @state = create(:addresses_state)
+    @city = create(:addresses_city, state: @state)
   end
 
   describe "GET /cities" do 
