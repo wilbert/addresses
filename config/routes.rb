@@ -6,6 +6,8 @@ Addresses::Engine.routes.draw do
     get "per_state/:state_id", to: "cities#index", :on => :collection
   end
 
+  resource :cep, defaults: {format: :json}
+
   resources :neighborhoods
 
   root to: "cities#index"

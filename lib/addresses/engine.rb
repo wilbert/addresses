@@ -1,6 +1,7 @@
-# require 'rails-jquery-autocomplete'
 require 'rails4-autocomplete'
 require 'jquery-ui-rails'
+require 'addresses/plugins/form_helper'
+require 'addresses/plugins/simple_form_plugin'
 
 module Addresses
   class Engine < ::Rails::Engine
@@ -8,7 +9,7 @@ module Addresses
 
     # initializer "addresses.assets.precompile" do |app|
     #   app.config.assets.precompile += %w(application.js)
-    # end    
+    # end
 
     config.generators do |g|
       g.test_framework      :rspec,        :fixture => false

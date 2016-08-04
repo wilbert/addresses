@@ -1,13 +1,23 @@
 <h1>Cities#index</h1>
 <p>Find me in app/views/addresses/cities/index.html.erb</p>
 
+<br/>
+<br/>
+<div class="input-group">
+  <%= cep_autocomplete_field_tag :cep, nil, placeholder: 'cep', loader:'.cep-uil-default-css', update_elements:{ address:'#endereco', cidade:'#city', uf:'#state_name'} %>
+  <%#= spinner %>
+</div>
+<br/>
+<br/>
+<%= text_field_tag :endereco, nil, placeholder: 'endereço', size:45 %>
+<br/>
+<br/>
+
+<label>Cidade (autocomplete)</label>
+<br/>
 <%= autocomplete_field_tag 'city', '', autocomplete_city_name_cities_path, update_elements:{ name:'#city', state_name:'#state_name'} %>
 <br/>
 <br/>
+<label>Estado</label>
+<br/>
 <%= text_field_tag :state_name %>
-
-<script>
-  $('#city').bind('railsAutocomplete.select', function(event, data){
-    console.log(a=data.item);
-  });
-</script>

@@ -60,3 +60,16 @@ Use these models in your project as:
     /*
      *= require jquery-ui
      */
+
+=== Using CEP finder
+
+1. Adding application.js
+    //= require addresses/cep-autocomplete
+
+* Simple_form
+
+    <%= f.input :cep, as: :cep_autocomplete, required:true, input_html: { class:'mask', mask_place_holder: '_____-___', mask_format:'00000-000' }, loader:'.cep-uil-default-css', update_elements:{ address:'#customer_address', cidade:'#customer_city', uf:'#customer_state'} %>
+
+* Rails helper
+
+  <%= cep_autocomplete_field_tag :cep, nil, placeholder: 'cep', loader:'.cep-uil-default-css', update_elements:{ address:'#endereco', cidade:'#city', uf:'#state_name'} %>

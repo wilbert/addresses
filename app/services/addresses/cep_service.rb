@@ -9,41 +9,49 @@ module Addresses
 
     attr_accessor :attr
 
-    def initialize(cep)
-      @attr = self.class.find(cep)
+    def initialize(cep_or_attr)
+      if cep_or_attr.is_a? Hash
+        @attr = cep_or_attr
+      else
+        @attr = self.class.find(cep_or_attr)
+      end
+
       super @attr
       self.send('resultado=', self.resultado.to_i)
       
       @attr = @attr.symbolize_keys rescue nil
-
-      # {
-      #   resultado:'1'
-      #   resultado_txt:'sucesso - cep completo'
-      #   uf:'SP'
-      #   cidade:'São Paulo'
-      #   bairro:'Vila Barbosa'
-      #   tipo_logradouro:'Rua'
-      #   logradouro:'Professor João Leocádio'
-      # }
     end
 
     def address_full
-      MASK_FULL % @attr
+      if valid?
+        MASK_FULL % @attr
+      else
+        ''
+      end
     end
 
     def address
-      MASK % @attr
+      if valid?
+        MASK % @attr 
+      else
+        ''
+      end
     end
 
     def valid?
       resultado>=1
     end
 
+    def to_json
+      self.attr.merge(address_full: address_full, address:address).to_json
+    end
+
     def self.find(cep)
       uri = URI(URL+"&cep=#{cep}")
+      puts "::GET #{uri}"
       response = Net::HTTP.get(uri)
-      JSON.parse(response)
+      params = JSON.parse(response)
+      CepService.new params
     end
   end
 end
-

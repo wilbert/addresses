@@ -13,3 +13,4 @@
 //= require jquery
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
+//= require addresses/cep-autocomplete
