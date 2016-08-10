@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://cep.republicavirtual.com.br/web_cep.php?cep=02556180&formato=json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - cep.republicavirtual.com.br
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 02 Aug 2016 22:44:55 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"resultado":"1","resultado_txt":"sucesso - cep completo","uf":"SP","cidade":"S\u00e3o
+        Paulo","bairro":"Vila Barbosa","tipo_logradouro":"Rua","logradouro":"Professor
+        Jo\u00e3o Leoc\u00e1dio"}'
+    http_version: 
+  recorded_at: Tue, 02 Aug 2016 22:44:55 GMT
+recorded_with: VCR 2.9.3

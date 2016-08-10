@@ -43,3 +43,47 @@ Use these models in your project as:
     address.city = Address::City.find(city_id)
     address.neighborhood = Address::Neighborhood.find(neighborhood_id)
     address.save
+
+=== Using autocomplete field
+
+1. Add into file my_app/app/assets/javascripts/application.js
+
+    //= require jquery-ui/autocomplete
+    //= require autocomplete-rails
+
+1. Add into file my_app/app/assets/stylesheets/application.css.scss
+
+    @import 'jquery-ui/autocomplete';
+
+    or 
+
+    /*
+     *= require jquery-ui
+     */
+
+=== Using CEP finder
+
+1. Adding application.js
+    //= require addresses/cep-autocomplete
+
+* Simple_form
+
+    <%= f.input :cep, as: :cep_autocomplete, loader:'.cep-uil-default-css', update_elements:{ address:'#customer_address', cidade:'#customer_city', uf:'#customer_state'} %>
+
+* Rails helper
+
+    <%= cep_autocomplete_field_tag :cep, nil, placeholder: 'cep', loader:'.cep-uil-default-css', update_elements:{ address:'#endereco', cidade:'#city', uf:'#state_name'} %>
+
+==== Avoid ANTI CSRF-token
+
+You can avoid cross-site request forgery
+
+1. Put it inside my-app/config/initializers/addresses.rb
+
+    Addresses.with_cep_csrf_token = true
+
+1. Put it inside your view template that is implementing the Addresses gem
+
+    <%= cep_crsf_token_tag %>
+
+    

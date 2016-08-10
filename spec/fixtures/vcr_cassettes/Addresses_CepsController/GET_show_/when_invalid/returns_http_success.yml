@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://cep.republicavirtual.com.br/web_cep.php?cep=0000000&formato=json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - cep.republicavirtual.com.br
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 03 Aug 2016 15:00:28 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"resultado":"0","resultado_txt":"sucesso - cep n\u00e3o encontrado","uf":"","cidade":"","bairro":"","tipo_logradouro":"","logradouro":""}'
+    http_version: 
+  recorded_at: Wed, 03 Aug 2016 15:00:33 GMT
+recorded_with: VCR 2.9.3
