@@ -1,3 +1,4 @@
+require 'securerandom'
 module ActionView
   module Helpers
     module FormHelper

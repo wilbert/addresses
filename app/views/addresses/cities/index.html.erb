@@ -1,11 +1,9 @@
 <h1>Cities#index</h1>
 <p>Find me in app/views/addresses/cities/index.html.erb</p>
-
 <br/>
 <br/>
 <div class="input-group">
   <%= cep_autocomplete_field_tag :cep, nil, placeholder: 'cep', loader:'.cep-uil-default-css', update_elements:{ address:'#endereco', cidade:'#city', uf:'#state_name'} %>
-  <%#= spinner %>
 </div>
 <br/>
 <br/>
@@ -21,3 +19,5 @@
 <label>Estado</label>
 <br/>
 <%= text_field_tag :state_name %>
+
+<%= cep_crsf_token_tag %>

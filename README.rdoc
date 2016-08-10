@@ -68,8 +68,22 @@ Use these models in your project as:
 
 * Simple_form
 
-    <%= f.input :cep, as: :cep_autocomplete, required:true, input_html: { class:'mask', mask_place_holder: '_____-___', mask_format:'00000-000' }, loader:'.cep-uil-default-css', update_elements:{ address:'#customer_address', cidade:'#customer_city', uf:'#customer_state'} %>
+    <%= f.input :cep, as: :cep_autocomplete, loader:'.cep-uil-default-css', update_elements:{ address:'#customer_address', cidade:'#customer_city', uf:'#customer_state'} %>
 
 * Rails helper
 
-  <%= cep_autocomplete_field_tag :cep, nil, placeholder: 'cep', loader:'.cep-uil-default-css', update_elements:{ address:'#endereco', cidade:'#city', uf:'#state_name'} %>
+    <%= cep_autocomplete_field_tag :cep, nil, placeholder: 'cep', loader:'.cep-uil-default-css', update_elements:{ address:'#endereco', cidade:'#city', uf:'#state_name'} %>
+
+==== Avoid ANTI CSRF-token
+
+You can avoid cross-site request forgery
+
+1. Put it inside my-app/config/initializers/addresses.rb
+
+    Addresses.with_cep_csrf_token = true
+
+1. Put it inside your view template that is implementing the Addresses gem
+
+    <%= cep_crsf_token_tag %>
+
+    
