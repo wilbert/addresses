@@ -1,3 +1,4 @@
+require 'securerandom'
 module Addresses
   module ApplicationHelper
     def cep_crsf_token_tag
