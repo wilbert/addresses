@@ -12,13 +12,13 @@ It allows you use these models:
 
 == Installation
 
-## Rails 5
+=== Rails 5
 
 Add this code to your Gemfile:
 
-    gem 'addresses', '~> 0.0.9'
+    gem 'addresses', '~> 1.0.0'
 
-## Rails <= 4
+=== Rails <= 4
 
 Add this code to your Gemfile:
 
