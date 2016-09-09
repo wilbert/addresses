@@ -1,6 +1,13 @@
 ENV['RAILS_ENV'] ||= 'test'
 
+if ENV['RAILS_ENV'] == 'test'
+  require 'simplecov'
+  SimpleCov.start 'rails'
+  puts "required simplecov"
+end
+
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
+
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'factory_girl_rails'
