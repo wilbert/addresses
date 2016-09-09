@@ -12,9 +12,17 @@ It allows you use these models:
 
 == Installation
 
+## Rails 5
+
 Add this code to your Gemfile:
 
-    gem 'addresses', git: 'https://github.com/wilbert/addresses'
+    gem 'addresses', '~> 0.0.9'
+
+## Rails <= 4
+
+Add this code to your Gemfile:
+
+    gem 'addresses', '0.0.9'
 
 After this, add this line to your routes:
 
