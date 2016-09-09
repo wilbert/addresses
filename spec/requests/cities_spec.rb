@@ -1,18 +1,18 @@
+# frozen_string_literal: true
 require 'spec_helper'
 
-describe Addresses::CitiesController do
-    #routes { Addresses::Engine.routes }
-    
-    before (:each) do
-        @state = FactoryGirl.create(:addresses_state)
-        @city = FactoryGirl.create(:addresses_city, state: @state)
-    end
+RSpec.describe Addresses::CitiesController, type: :request do
+  let!(:state) { create :state }
+  let!(:city) { create :city, state: state }
 
-    describe "GET /cities" do 
-        it "should return an interview" do
-            get addresses.cities_path(state_id: @state.id), format: "json"
-            json = JSON.parse(response.body)
-            json[0]["name"].should == @city.name
-        end
+  describe "GET /cities" do
+    before { get '/addresses/cities', params: { state_id: state.id, format: "json" } }
+
+    it "should return an interview" do
+      json = JSON.parse(response.body)
+
+      expect(response.status).to be(200)
+      expect(json[0]["name"]).to eq(city.name)
     end
-end                         
+  end
+end
