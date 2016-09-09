@@ -5,11 +5,11 @@ module Addresses
     respond_to :json
 
     def index
-        @city = City.find(params[:city_id])
-        
-        @neighborhoods = @city.neighborhoods.order("name asc")
+      @city = City.find(params[:city_id])
 
-        respond_with @neighborhoods
+      @neighborhoods = @city.neighborhoods.order("name asc")
+
+      respond_with @neighborhoods
     end
   end
 end

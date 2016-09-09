@@ -5,11 +5,11 @@ module Addresses
     respond_to :json
 
     def index
-        @state = State.find(params[:state_id])
-        
-        @cities = @state.cities.order("name asc")
+      @state = State.find(params[:state_id])
 
-        respond_with @cities
+      @cities = @state.cities.order("name asc")
+
+      respond_with @cities
     end
   end
 end
