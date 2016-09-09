@@ -12,6 +12,16 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
-gem 'sqlite3'
-gem 'rspec-rails'
-gem 'factory_girl_rails'
+#
+group :test, :development do
+  gem 'responders',   '2.2.0'
+  gem 'pry-rails',    '0.3.4'
+  gem 'pry-nav',      '0.2.4'
+  gem 'sqlite3',      '1.3.11'
+end
+
+group :test do
+  gem 'rails-controller-testing',   '1.0.1'
+  gem 'shoulda-matchers',           '3.1.1'
+  gem 'simplecov',                  '0.12.0'
+end
