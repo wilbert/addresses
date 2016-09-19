@@ -5,7 +5,7 @@ module Addresses
     def show
       @zipcode = Address.find_by(zipcode: params[:zipcode])
 
-      render json: {error: 'This is Error'}
+      render json: @zipcode
     end
   end
 end

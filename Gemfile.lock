@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: a77dfdaa851cd67e4052e16e0d42a1656f0501a9
+  specs:
+    active_model_serializers (0.10.2)
+      actionpack (>= 4.1, < 6)
+      activemodel (>= 4.1, < 6)
+      jsonapi (~> 0.1.1.beta2)
+
 PATH
   remote: .
   specs:
@@ -45,7 +54,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    arel (7.1.1)
+    arel (7.1.2)
     builder (3.2.2)
     capybara (2.8.1)
       addressable
@@ -67,7 +76,9 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
-    json (2.0.2)
+    json (1.8.3)
+    jsonapi (0.1.1.beta2)
+      json (~> 1.8)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -171,6 +182,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers!
   addresses!
   capybara (= 2.8.1)
   factory_girl_rails (= 4.7.0)

@@ -13,6 +13,8 @@ gemspec
 # To use debugger
 # gem 'debugger'
 #
+gem "active_model_serializers", github: "rails-api/active_model_serializers"
+
 group :test, :development do
   gem 'responders',   '2.2.0'
   gem 'pry-rails',    '0.3.4'
