@@ -1,7 +1,6 @@
 Addresses::Engine.routes.draw do
-  resources :cities
+  resources :cities, only: :index
 
-  resources :neighborhoods
+  resources :neighborhoods, only: :index
 
-  root to: "cities#index"
 end
