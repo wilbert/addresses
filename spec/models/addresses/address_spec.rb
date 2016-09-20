@@ -2,15 +2,12 @@ require 'spec_helper'
 
 RSpec.describe Addresses::Address, type: :model do
   describe 'validation' do
-    it { is_expected.to validate_presence_of(:zipcode) }
+    it { is_expected.to validate_presence_of(:zipcode_id) }
     it { is_expected.to validate_presence_of(:number) }
-    it { is_expected.to validate_presence_of(:city_id) }
-    it { is_expected.to validate_presence_of(:state_id) }
   end
 
   describe 'association' do
-    it { is_expected.to belong_to(:city) }
-    it { is_expected.to belong_to(:neighborhood) }
+    it { is_expected.to belong_to(:zipcode) }
     it { is_expected.to belong_to(:addressable) }
   end
 

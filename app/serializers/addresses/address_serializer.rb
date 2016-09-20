@@ -1,8 +1,7 @@
 module Addresses
   class AddressSerializer < ActiveModel::Serializer
-    attributes :id, :street, :number, :complement, :zipcode, :city, :neighborhood
+    attributes :id, :number, :complement, :zipcode
 
-    belongs_to :city
-    belongs_to :neighborhood
+    belongs_to :zipcode
   end
 end

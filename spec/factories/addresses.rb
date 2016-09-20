@@ -2,11 +2,8 @@
 
 FactoryGirl.define do
   factory :address, class: Addresses::Address do
-    street "Street name"
     number "Number"
     complement nil
-    association :city
-    association :neighborhood
-    zipcode "Zipcode"
+    association :zipcode
   end
 end
