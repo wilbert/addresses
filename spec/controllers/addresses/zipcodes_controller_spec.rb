@@ -9,7 +9,7 @@ RSpec.describe Addresses::ZipcodesController, type: :controller do
   let!(:neighborhood) { create :neighborhood, city: city }
   let!(:zipcode) { create :zipcode, city: city, neighborhood: neighborhood, number: '05012010' }
 
-  describe "GET #show" do
+  describe "GET #show", :vcr do
     context 'passing a valid zipcode' do
       before { get :show, params: { zipcode: '05012010', format: :json } }
 

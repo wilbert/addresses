@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe ZipcodeService, type: :service do
-  describe '.find' do
+  describe '.find', :vcr do
     context 'when pass a valid zipcode' do
       let!(:zipcode) { ZipcodeService.find('05012010') }
 

@@ -26,4 +26,6 @@ group :test do
   gem 'rails-controller-testing',   '1.0.1'
   gem 'shoulda-matchers',           '3.1.1'
   gem 'simplecov',                  '0.12.0'
+  gem 'webmock',                    '1.21.0'
+  gem 'vcr',                        '3.0.1'
 end

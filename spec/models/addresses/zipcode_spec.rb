@@ -13,7 +13,7 @@ RSpec.describe Addresses::Zipcode, type: :model do
     it { is_expected.to have_many(:addresses) }
   end
 
-  describe '.find_or_create_by_service' do
+  describe '.find_or_create_by_service', :vcr do
     context 'when the zipcode exists in database' do
       let!(:zipcode) { create :zipcode }
       let!(:searched_zipcode) { Addresses::Zipcode.find_or_create_by_service(zipcode.number) }

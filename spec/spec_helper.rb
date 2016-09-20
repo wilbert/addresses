@@ -12,6 +12,13 @@ require 'rspec/rails'
 require 'factory_girl_rails'
 require 'shoulda/matchers'
 
+require 'webmock/rspec'
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+end
+
 Rails.backtrace_cleaner.remove_silencers!
 # Load support files
 
