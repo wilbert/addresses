@@ -12,7 +12,10 @@ RSpec.describe Addresses::CitiesController, type: :request do
       json = JSON.parse(response.body)
 
       expect(response.status).to be(200)
+      expect(json[0]["id"]).to eq(city.id)
       expect(json[0]["name"]).to eq(city.name)
+      expect(json[0]["state"]["id"]).to eq(state.id)
+      expect(json[0]["state"]["name"]).to eq(state.name)
     end
   end
 end
