@@ -31,7 +31,8 @@ RSpec.describe Addresses::Zipcode, type: :model do
       end
 
       context 'and the zipcode was not found in web service' do
-        it { expect{ Addresses::Zipcode.find_or_create_by_service('99999999') }.to raise_error(ZipcodeNotFound) }
+        let!(:searched_zipcode) { Addresses::Zipcode.find_or_create_by_service('99999999') }
+        it { expect(searched_zipcode).to be_nil }
       end
     end
   end

@@ -34,6 +34,8 @@ module Addresses
       end
 
       zipcode
+    rescue
+      nil
     end
 
     def to_s
