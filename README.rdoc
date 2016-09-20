@@ -14,7 +14,7 @@ It allows you use these models:
 
 === Rails 5
 
-This version requires Ruby >= 2.2 for older ruby versions use `gem 'addresses', '0.0.9'`.
+This version requires Ruby >= 2.2 for older ruby versions add to your Gemfile "gem 'addresses', '0.0.9'".
 
 Add this code to your Gemfile:
 
