@@ -10,6 +10,7 @@ RSpec.describe Addresses::Zipcode, type: :model do
   describe 'association' do
     it { is_expected.to belong_to(:city) }
     it { is_expected.to belong_to(:neighborhood) }
+    it { is_expected.to have_many(:addresses) }
   end
 
   describe '#to_s' do

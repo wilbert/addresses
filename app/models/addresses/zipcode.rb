@@ -4,6 +4,7 @@ module Addresses
 
     belongs_to :city
     belongs_to :neighborhood
+    has_many :addresses
 
     validates :number, :city_id, :state_id, presence: true
 
