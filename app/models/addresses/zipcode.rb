@@ -42,6 +42,12 @@ module Addresses
       "#{self.street}, #{self.neighborhood.name}. #{self.city.name} - #{self.city.state.acronym}"
     end
 
+    def as_json options=nil
+      options ||= {}
+      options[:methods] = ((options[:methods] || []) + [:state_id])
+      super options
+    end
+
     private
     def set_state_id
       self.state_id = self.city.state.id unless self.city.nil?
