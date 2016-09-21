@@ -1,16 +1,8 @@
-GIT
-  remote: git://github.com/rails-api/active_model_serializers.git
-  revision: a77dfdaa851cd67e4052e16e0d42a1656f0501a9
-  specs:
-    active_model_serializers (0.10.2)
-      actionpack (>= 4.1, < 6)
-      activemodel (>= 4.1, < 6)
-      jsonapi (~> 0.1.1.beta2)
-
 PATH
   remote: .
   specs:
-    addresses (1.0.0)
+    addresses (1.0.1)
+      active_model_serializers (~> 0.10.0)
       rails (~> 5.0)
 
 GEM
@@ -39,6 +31,11 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_model_serializers (0.10.2)
+      actionpack (>= 4.1, < 6)
+      activemodel (>= 4.1, < 6)
+      jsonapi (~> 0.1.1.beta2)
+      railties (>= 4.1, < 6)
     activejob (5.0.0.1)
       activesupport (= 5.0.0.1)
       globalid (>= 0.3.6)
@@ -189,7 +186,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers!
+  active_model_serializers (~> 0.10.0)
   addresses!
   capybara (= 2.8.1)
   factory_girl_rails (= 4.7.0)
