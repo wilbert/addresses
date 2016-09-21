@@ -16,10 +16,9 @@ RSpec.describe Addresses::ZipcodesController, type: :request do
       expect(json["street"]).to eq(zipcode.street)
       expect(json["city"]["id"]).to eq(city.id)
       expect(json["city"]["name"]).to eq(city.name)
-      expect(json["city"]["state"]["id"]).to eq(state.id)
       expect(json["city"]["state"]["name"]).to eq(state.name)
-      expect(json["neighborhood"]["id"]).to eq(neighborhood.id)
       expect(json["neighborhood"]["name"]).to eq(neighborhood.name)
+      expect(json["zipcode"]).to eq('05012010')
     end
   end
 end

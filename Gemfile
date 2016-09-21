@@ -13,8 +13,6 @@ gemspec
 # To use debugger
 # gem 'debugger'
 #
-gem "active_model_serializers",     '~> 0.10.0'
-
 group :test, :development do
   gem 'responders',   '2.2.0'
   gem 'pry-rails',    '0.3.4'
