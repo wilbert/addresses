@@ -5,6 +5,7 @@ RSpec.describe Addresses::Zipcode, type: :model do
     it { is_expected.to validate_presence_of(:number) }
     it { is_expected.to validate_presence_of(:city_id) }
     it { is_expected.to validate_presence_of(:state_id) }
+    it { is_expected.to validate_presence_of(:street) }
   end
 
   describe 'association' do
