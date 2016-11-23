@@ -1,5 +1,5 @@
 Addresses::Engine.routes.draw do
-  resources :cities, only: :index
+  resources :cities, only: [:index, :show]
 
   resources :neighborhoods, only: :index
 

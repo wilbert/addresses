@@ -8,11 +8,24 @@ RSpec.describe Addresses::CitiesController, type: :request do
   describe "GET /cities" do
     before { get '/addresses/cities', params: { state_id: state.id, format: "json" } }
 
-    it "should return an interview" do
+    it "should return an list of cities" do
       json = JSON.parse(response.body)
 
       expect(response.status).to be(200)
+      expect(json.size).to eq(1)
       expect(json[0]["name"]).to eq(city.name)
+    end
+  end
+
+  describe "GET /cities/:id" do
+    before { get "/addresses/cities/#{city.id}", params: { format: "json" } }
+
+    it "should return a specific city" do
+      json = JSON.parse(response.body)
+
+      expect(response.status).to be(200)
+      expect(json["id"]).to eq(city.id)
+      expect(json["name"]).to eq(city.name)
     end
   end
 end

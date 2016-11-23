@@ -13,4 +13,11 @@ RSpec.describe Addresses::CitiesController, type: :controller do
     it { expect(response).to have_http_status(:success) }
     it { expect(assigns(:cities)).to eq([city]) }
   end
+
+  describe "GET #show" do
+    before { get :show, params: { id: city.id, format: :json } }
+
+    it { expect(response).to have_http_status(:success) }
+    it { expect(assigns(:city)).to eq(city) }
+  end
 end
