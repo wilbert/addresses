@@ -1,23 +1,15 @@
+# frozen_string_literal: true
 require 'spec_helper'
 
-module Addresses
-    describe StatesController do
-        routes { Addresses::Engine.routes }
+RSpec.describe Addresses::StatesController, type: :controller do
+  routes { Addresses::Engine.routes }
 
-        before do
-            @state = FactoryGirl.create(:addresses_state)
-        end
+  let!(:state) { create :state }
 
-        describe "GET 'index'" do
-            it "returns http success" do
-                get 'index', { format: :json }
-                response.should be_success
-            end
+  describe "GET #index" do
+    before { get :index, params: { state_id: state.id, format: :json } }
 
-            it "assings correct variables" do
-                get 'index', { format: :json }
-                assigns(:states).should eq([@state])
-            end
-        end
-    end
+    it { expect(response).to have_http_status(:success) }
+    it { expect(assigns(:states)).to eq([state]) }
+  end
 end
