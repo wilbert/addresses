@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-module Addresses
-  describe Neighborhood do
-    pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Addresses::Neighborhood, :type => :model do
+  describe 'association' do
+    it { is_expected.to belong_to(:city) }
   end
 end

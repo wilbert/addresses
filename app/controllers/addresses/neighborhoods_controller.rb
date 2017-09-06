@@ -2,14 +2,12 @@ require_dependency "addresses/application_controller"
 
 module Addresses
   class NeighborhoodsController < ApplicationController
-    respond_to :json
-
     def index
-        @city = City.find(params[:city_id])
-        
-        @neighborhoods = @city.neighborhoods.order("name asc")
+      @city = City.find(params[:city_id])
 
-        respond_with @neighborhoods
+      @neighborhoods = @city.neighborhoods.order("name asc")
+
+      render json: @neighborhoods
     end
   end
 end
