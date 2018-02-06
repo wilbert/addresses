@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-module Addresses
-  describe Country do
-    pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Addresses::Country, :type => :model do
+  describe 'association' do
+    it { is_expected.to have_many(:states) }
   end
 end

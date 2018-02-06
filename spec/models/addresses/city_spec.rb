@@ -1,7 +1,8 @@
 require 'spec_helper'
 
-module Addresses
-  describe City do
-    pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Addresses::City, :type => :model do
+  describe 'association' do
+    it { is_expected.to belong_to(:state) }
+    it { is_expected.to have_many(:neighborhoods) }
   end
 end
