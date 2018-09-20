@@ -4,7 +4,7 @@ module Addresses
     belongs_to :addressable, polymorphic: true
 
     validates :number, presence: true
-    validates :zipcode_id, presence: true, if: Proc.new{|a| a.zipcode.street.blank? }
+    validates :zipcode_id, presence: true, if: Proc.new{|a| a.try(:zipcode).try(:street).blank? }
     delegate :street, :neighborhood, :city, to: :zipcode
 
     accepts_nested_attributes_for :zipcode, allow_destroy: false
