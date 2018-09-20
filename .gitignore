@@ -11,3 +11,4 @@ spec/dummy/log/test.log
 *.gem
 .ruby-version
 coverage/*
+*.log
