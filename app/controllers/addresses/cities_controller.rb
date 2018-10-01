@@ -7,8 +7,7 @@ module Addresses
         @state = State.find(params[:state_id])
         @cities = @state.cities.order("name asc")
       else
-        @cities = City.order('name asc')
-        @cities = @cities.where('name like ?', params[:name]) if params[:name]
+        @cities = City.filter(params)
       end
 
       render json: @cities
