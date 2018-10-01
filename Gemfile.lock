@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    addresses (1.0.6)
+    addresses (1.0.8)
       rails (~> 5.0)
 
 GEM
@@ -198,4 +198,4 @@ DEPENDENCIES
   webmock (= 3.4.2)
 
 BUNDLED WITH
-   1.16.4
+   1.16.5
