@@ -12,7 +12,11 @@ RSpec.describe Addresses::Address, type: :model do
   end
 
   describe '#to_s' do
-    let!(:address) { create :address }
-    it { expect(address.to_s).to eq("Street name, Number, Neighborhood name. City name - State acronym") }
+    let!(:zipcode) { create(:zipcode, neighborhood: nil) }
+    let!(:address) { create(:address) }
+    let!(:address1) { create(:address, zipcode: zipcode) }
+
+    it { expect(address.to_s).to eq("Street name, Number, Neighborhood name - City name/State acronym") }
+    it { expect(address1.to_s).to eq("Street name, Number - City name/State acronym") }
   end
 end

@@ -10,7 +10,10 @@ module Addresses
     accepts_nested_attributes_for :zipcode, allow_destroy: false
 
     def to_s
-      "#{self.street}, #{self.number}, #{self.neighborhood.name}. #{self.city.name} - #{self.city.state.acronym}"
+      to_s = "#{street}, #{number}"
+      to_s += ", #{neighborhood.name}" if neighborhood
+      to_s += " - #{city.name}" if city
+      to_s += "/#{city.state.acronym}" if city && city.state
     end
   end
 end
