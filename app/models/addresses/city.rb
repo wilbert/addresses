@@ -1,5 +1,7 @@
 module Addresses
   class City < ActiveRecord::Base
+    validates :name, :state_id, presence: true
+
     belongs_to :state
 
     has_many :neighborhoods
@@ -10,7 +12,7 @@ module Addresses
       query_word = 'ilike' if adapter == 'postgresql'
 
       cities = City.order('name asc')
-      
+
       cities = cities.where("name #{query_word} ?", "%#{params[:name]}%") if params[:name]
 
       cities
