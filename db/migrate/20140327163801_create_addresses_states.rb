@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class CreateAddressesStates < ActiveRecord::Migration
+class CreateAddressesStates < ActiveRecord::Migration[4.2]
   def change
     create_table :addresses_states do |t|
       t.string :name
