@@ -14,12 +14,16 @@ namespace :br do
 
       state = Addresses::State.find_by(acronym: state_acronym)
 
-      city = Addresses::City.find_or_create_by(name: city_name, state_id: state.id)
-      neighborhood = Addresses::Neighborhood.find_or_create_by(name: neighborhood_name.strip, city_id: city.id)
+      city = state.cities.find_or_create_by(name: city_name)
+
+      unless neighborhood_name.blank?
+        neighborhood = city.neighborhoods.find_by(name: neighborhood_name.strip)
+        neighborhood = city.neighborhoods.create!(name: neighborhood_name) if neighborhood.nil?
+      end
 
       zipcode = Addresses::Zipcode.new
       zipcode.city_id = city.id
-      zipcode.neighborhood_id = neighborhood.id
+      zipcode.neighborhood_id = neighborhood.try(:id)
       zipcode.street = street_name.strip
       zipcode.number = zipcode_number.strip
 
