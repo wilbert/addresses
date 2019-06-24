@@ -20,7 +20,7 @@ RSpec.describe Addresses::CitiesController, type: :controller do
     before { get :index, params: { format: :json } }
 
     it { expect(response).to have_http_status(:success) }
-    it { expect(assigns(:cities)).to eq([city, city2]) }
+    it { expect(assigns(:cities)).to eq([]) }
   end
 
   describe "GET #index with search by name" do
