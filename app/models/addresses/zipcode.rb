@@ -8,8 +8,10 @@ module Addresses
 
     validates :number, :city_id, :state_id, presence: true
 
-    after_find :set_state_id
     before_validation :set_state_id
+
+    delegate :state, to: :city, allow_nil: true
+    delegate :country, to: :state, allow_nil: true
 
     def self.find_or_create_by_service(number)
       zipcode = Zipcode.find_by(number: number)

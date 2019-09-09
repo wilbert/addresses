@@ -5,7 +5,7 @@ module Addresses
 
     validates :number, presence: true
     validates :zipcode_id, presence: true, if: Proc.new{|a| a.try(:zipcode).try(:street).blank? }
-    delegate :street, :neighborhood, :city, to: :zipcode
+    delegate :street, :neighborhood, :city, to: :zipcode, allow_nil: true
 
     accepts_nested_attributes_for :zipcode, allow_destroy: false
 
