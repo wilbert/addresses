@@ -12,3 +12,5 @@ spec/dummy/log/test.log
 .ruby-version
 coverage/*
 *.log
+addresses.dump
+.history/*
