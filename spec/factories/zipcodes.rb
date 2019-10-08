@@ -1,8 +1,8 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :zipcode, class: Addresses::Zipcode do
-    street "Street name"
+    street { 'Av. Senador Salgado Filho' }
     association :city
     association :neighborhood
-    number "12345678"
+    number {"59015900"}
   end
 end

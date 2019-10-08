@@ -22,7 +22,7 @@ RSpec.describe ZipcodeService, type: :service do
       before do
         allow_any_instance_of(Net::HTTPOK).to receive(:kind_of?).and_return(false)
       end
-      
+
       it { expect { ZipcodeService.find('05012010') }.to raise_error(WebServiceNotAvaialable) }
     end
   end

@@ -1,9 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :address, class: Addresses::Address do
-    number "Number"
-    complement nil
+    number { '1559' }
+    complement 'Sala 66'
     association :zipcode
   end
 end

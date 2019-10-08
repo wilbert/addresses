@@ -1,9 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :state, class: Addresses::State do
-    name "State name"
-    acronym "State acronym"
+    name { 'Rio Grande do Norte' }
+    acronym { 'RN' }
     association :country
   end
 end
