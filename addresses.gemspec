@@ -17,5 +17,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", '~> 6.0.0'
 
   s.add_development_dependency 'rspec-rails',           '3.8.2'
-  s.add_development_dependency 'factory_bot_rails'
+  s.add_development_dependency 'factory_bot_rails',     '5.1.1'
 end
