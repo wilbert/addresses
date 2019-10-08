@@ -16,6 +16,6 @@ class AddIndexes < ActiveRecord::Migration[6.0]
 
     add_index :addresses_zipcodes, :number
 
-    add_index :addresses_addresses, [:addressable_id, :addressable_type]
+    add_index :addresses_addresses, [:addressable_id, :addressable_type], name: :index_addresses_addressable
   end
 end
