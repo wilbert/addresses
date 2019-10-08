@@ -10,7 +10,7 @@ group :test, :development do
 end
 
 group :test do
-  # gem 'rails-controller-testing',   '1.0.1'
+  gem 'rails-controller-testing',   '1.0.4'
   gem 'shoulda-matchers',           '3.1.1'
   gem 'simplecov',                  '0.12.0'
   gem 'webmock',                    '3.4.2'

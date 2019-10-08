@@ -9,9 +9,9 @@ end
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rspec/rails'
-require 'factory_bot'
 require 'shoulda/matchers'
 require 'webmock/rspec'
+require 'factory_bot_rails'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
@@ -30,7 +30,6 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.include FactoryBot::Syntax::Methods
   config.order = "random"
-
   config.include(Shoulda::Matchers::ActiveModel, type: :model)
   config.include(Shoulda::Matchers::ActiveRecord, type: :model)
 end

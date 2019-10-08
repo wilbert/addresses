@@ -7,6 +7,7 @@ module Addresses
     has_many :addresses
 
     validates :number, :city_id, :state_id, presence: true
+    validates :street, presence: true
 
     before_validation :set_state_id
 

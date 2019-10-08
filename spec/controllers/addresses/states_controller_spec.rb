@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Addresses::StatesController, type: :controller do
   routes { Addresses::Engine.routes }

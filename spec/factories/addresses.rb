@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :address, class: Addresses::Address do
     number { '1559' }
-    complement 'Sala 66'
+    complement { 'Sala 66' }
     association :zipcode
   end
 end
