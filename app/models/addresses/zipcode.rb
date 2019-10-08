@@ -16,46 +16,13 @@ module Addresses
     delegate :state, to: :city, allow_nil: true
     delegate :country, to: :state, allow_nil: true
 
-    def self.find_or_create_by_service(number)
-      zipcode = Zipcode.find_by(number: number)
-
-      unless zipcode.present?
-        remote_zipcode = ZipcodeService.find(number)
-        if remote_zipcode.present?
-          new_zipcode = Zipcode.new
-          new_zipcode.street = [remote_zipcode[:tipo_logradouro], remote_zipcode[:logradouro]].join(' ')
-          new_zipcode.number = number
-
-          remote_state = State.find_or_create_by(acronym: remote_zipcode[:uf].upcase)
-          remote_city = City.find_or_create_by(name: remote_zipcode[:cidade], state_id: remote_state.id)
-
-          new_zipcode.city = remote_city
-          new_zipcode.neighborhood = Neighborhood.find_or_create_by(name: remote_zipcode[:bairro], city_id: remote_city.id)
-
-          new_zipcode.save!
-
-          return new_zipcode
-        end
-      end
-
-      zipcode
-    rescue
-      nil
-    end
-
-    def to_s
-      "#{self.street}, #{self.neighborhood.name}. #{self.city.name} - #{self.city.state.acronym}"
-    end
-
-    def as_json(options = nil)
-      options ||= {}
-      options[:methods] = ((options[:methods] || []) + [:state_id])
-      super options
+    def as_json(options = {})
+      super(options.merge(include: [:neighborhood, :city, :state, :country]))
     end
 
     private
       def set_state_id
-        self.state_id = self.city.state.id unless self.city.nil?
+        self.state_id = city.try(:state_id)
       end
   end
 end

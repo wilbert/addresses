@@ -13,9 +13,4 @@ RSpec.describe Addresses::Zipcode, type: :model do
     it { is_expected.to belong_to(:neighborhood) }
     it { is_expected.to have_many(:addresses) }
   end
-
-  describe '#to_s' do
-    let!(:zipcode) { create :zipcode }
-    it { expect(zipcode.to_s).to eq("Av. Senador Salgado Filho, Tirol. Natal - RN") }
-  end
 end
