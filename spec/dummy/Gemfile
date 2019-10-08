@@ -2,5 +2,3 @@ source "https://rubygems.org"
 
 gem 'sqlite3'
 gem 'addresses', path: '../../../addresses'
-gem 'pry-rails'
-gem 'pry-nav'
