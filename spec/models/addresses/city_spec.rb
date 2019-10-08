@@ -13,7 +13,7 @@ RSpec.describe Addresses::City, :type => :model do
       let!(:city) { create :city, state: state, name: 'Natal' }
       let!(:city2) { create :city, state: state2, name: 'São Paulo' }
 
-      it { expect(Addresses::City.filter.all).to eq([city, city2]) }
+      it { expect(Addresses::City.filter).to eq([]) }
       it { expect(Addresses::City.filter(name: 'paulo').all).to eq([city2]) }
     end
   end
