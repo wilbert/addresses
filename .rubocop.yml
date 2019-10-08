@@ -12,6 +12,7 @@ AllCops:
     - 'lib/**/*'
     - 'spec/**/*'
   Exclude:
+    - 'lib/tasks/populate/**/*'
     - 'spec/fixtures/**/*'
     - 'spec/dummy/**/*'
 

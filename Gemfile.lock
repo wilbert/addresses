@@ -172,6 +172,13 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-performance (1.5.0)
+      rubocop (>= 0.71.0)
+    rubocop-rails (2.3.2)
+      rack (>= 1.1)
+      rubocop (>= 0.72.0)
+    rubocop-rspec (1.36.0)
+      rubocop (>= 0.68.1)
     ruby-progressbar (1.10.1)
     safe_yaml (1.0.4)
     shoulda-matchers (3.1.1)
@@ -211,16 +218,19 @@ PLATFORMS
 DEPENDENCIES
   addresses!
   factory_bot_rails
-  pry-nav (= 0.2.4)
-  pry-rails (= 0.3.4)
+  pry-nav
+  pry-rails
   rails-controller-testing (= 1.0.4)
   rspec-rails (= 3.8.2)
   rubocop
-  shoulda-matchers (= 3.1.1)
-  simplecov (= 0.12.0)
+  rubocop-performance
+  rubocop-rails
+  rubocop-rspec
+  shoulda-matchers
+  simplecov
   sqlite3 (= 1.4.1)
-  vcr (= 3.0.1)
-  webmock (= 3.4.2)
+  vcr
+  webmock
 
 BUNDLED WITH
    1.17.3

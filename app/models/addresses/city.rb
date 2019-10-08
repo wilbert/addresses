@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Addresses
   class City < ActiveRecord::Base
     validates :name, :state_id, presence: true
@@ -19,11 +21,10 @@ module Addresses
     end
 
     private
-
-    def self.adapter
-      ActiveRecord::Base.connection.instance_values["config"][:adapter]
-    rescue
-      nil
-    end
+      def self.adapter
+        ActiveRecord::Base.connection.instance_values['config'][:adapter]
+      rescue
+        nil
+      end
   end
 end

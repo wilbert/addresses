@@ -1,4 +1,6 @@
-require_dependency "addresses/application_controller"
+# frozen_string_literal: true
+
+require_dependency 'addresses/application_controller'
 
 module Addresses
   class ZipcodesController < ApplicationController

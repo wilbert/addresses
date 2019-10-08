@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Addresses
   class Zipcode < ActiveRecord::Base
     attr_accessor :state_id
@@ -21,7 +23,7 @@ module Addresses
         remote_zipcode = ZipcodeService.find(number)
         if remote_zipcode.present?
           new_zipcode = Zipcode.new
-          new_zipcode.street = [remote_zipcode[:tipo_logradouro],remote_zipcode[:logradouro]].join(' ')
+          new_zipcode.street = [remote_zipcode[:tipo_logradouro], remote_zipcode[:logradouro]].join(' ')
           new_zipcode.number = number
 
           remote_state = State.find_or_create_by(acronym: remote_zipcode[:uf].upcase)
@@ -45,15 +47,15 @@ module Addresses
       "#{self.street}, #{self.neighborhood.name}. #{self.city.name} - #{self.city.state.acronym}"
     end
 
-    def as_json options=nil
+    def as_json(options = nil)
       options ||= {}
       options[:methods] = ((options[:methods] || []) + [:state_id])
       super options
     end
 
     private
-    def set_state_id
-      self.state_id = self.city.state.id unless self.city.nil?
-    end
+      def set_state_id
+        self.state_id = self.city.state.id unless self.city.nil?
+      end
   end
 end

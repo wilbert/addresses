@@ -1,9 +1,11 @@
-require_dependency "addresses/application_controller"
+# frozen_string_literal: true
+
+require_dependency 'addresses/application_controller'
 
 module Addresses
   class StatesController < ApplicationController
     def index
-      @states = State.order("name asc")
+      @states = State.order('name asc')
       render json: @states
     end
   end
