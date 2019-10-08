@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 RSpec.describe Addresses::CitiesController, type: :routing do
   routes { Addresses::Engine.routes }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Addresses::Engine.routes.draw do
   resources :cities, only: [:index, :show]
   resources :neighborhoods, only: [:index]

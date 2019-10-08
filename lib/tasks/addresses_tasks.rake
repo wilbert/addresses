@@ -1,9 +1,9 @@
 # encoding: utf-8
+# frozen_string_literal: true
 
-desc "Addresses rake"
-task :addresses do
-  Rake::Task["populate_countries"].invoke
-  Rake::Task["populate_states"].invoke
-  Rake::Task["populate_cities"].invoke
-  Rake::Task["populate_neighborhoods"].invoke
+namespace :br do
+  desc 'Addresses rake'
+  task addresses: [:environment] do
+    Rake::Task['populate:countries'].invoke
+  end
 end

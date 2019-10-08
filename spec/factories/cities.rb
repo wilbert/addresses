@@ -1,8 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :city, class: Addresses::City do
-    name "City name"
+    name { 'Natal' }
     association :state
   end
 end

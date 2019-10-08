@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 module Addresses
   class City < ActiveRecord::Base
+    validates :name, :state_id, presence: true
+
     belongs_to :state
 
     has_many :neighborhoods
@@ -11,7 +15,7 @@ module Addresses
         cities = City.order('name asc')
 
         cities = cities.where('state_id = ?', params[:state_id]) if params[:state_id]
-        cities = cities.where("name #{query_word} ?", "%#{params[:name]}%") if params[:name]
+        cities = cities.where("name #{query_word} ?", "#{params[:name]}%") if params[:name]
 
         cities
       end

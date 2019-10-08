@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Addresses::City, :type => :model do
   describe 'association' do

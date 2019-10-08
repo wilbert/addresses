@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Addresses::Address, type: :model do
   describe 'validation' do
@@ -16,7 +16,7 @@ RSpec.describe Addresses::Address, type: :model do
     let!(:address) { create(:address) }
     let!(:address1) { create(:address, zipcode: zipcode) }
 
-    it { expect(address.to_s).to eq("Street name, Number, Neighborhood name - City name/State acronym") }
-    it { expect(address1.to_s).to eq("Street name, Number - City name/State acronym") }
+    it { expect(address.to_s).to eq("Av. Senador Salgado Filho, 1559, Tirol - Natal/RN") }
+    it { expect(address1.to_s).to eq("Av. Senador Salgado Filho, 1559 - Natal/RN") }
   end
 end
