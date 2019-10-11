@@ -2,10 +2,12 @@
 
 module Addresses
   class Neighborhood < ActiveRecord::Base
-    validates :name, :city_id, presence: true
-
     belongs_to :city
 
+    default_scope { order('name asc') }
+
     has_many :zipcodes
+
+    validates :name, :city_id, presence: true
   end
 end

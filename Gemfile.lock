@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    addresses (2.0)
+    addresses (2.0.1)
       rails (~> 6.0.0)
 
 GEM

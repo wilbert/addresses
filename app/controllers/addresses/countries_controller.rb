@@ -3,14 +3,14 @@
 require_dependency 'addresses/application_controller'
 
 module Addresses
-  class CitiesController < ApplicationController
+  class CountriesController < ApplicationController
     def index
-      @cities = City.filter(params)
-      render json: @cities
+      @countries = Country.all
+      render json: @countries
     end
 
     def show
-      @city = City.find(params[:id])
+      @city = Country.find(params[:id])
       render json: @city
     end
   end

@@ -2,12 +2,14 @@
 
 module Addresses
   class City < ActiveRecord::Base
-    validates :name, :state_id, presence: true
-
     belongs_to :state
+
+    default_scope { order('name asc') }
 
     has_many :neighborhoods
     has_many :zipcodes
+
+    validates :name, :state_id, presence: true
 
     class << self
       def filter(params = {})
