@@ -7,6 +7,7 @@ module Addresses
     belongs_to :state
 
     has_many :neighborhoods
+    has_many :zipcodes
 
     class << self
       def filter(params = {})
@@ -21,16 +22,15 @@ module Addresses
       end
 
       private
+        def query_word
+          adapter == 'postgresql' ? 'ilike' : 'like'
+        end
 
-      def query_word
-        adapter == 'postgresql' ? 'ilike' : 'like'
-      end
-
-      def adapter
-        ActiveRecord::Base.connection.instance_values["config"][:adapter]
-      rescue
-        nil
-      end
+        def adapter
+          ActiveRecord::Base.connection.instance_values['config'][:adapter]
+        rescue
+          nil
+        end
     end
   end
 end

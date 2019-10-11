@@ -5,5 +5,7 @@ module Addresses
     validates :name, :city_id, presence: true
 
     belongs_to :city
+
+    has_many :zipcodes
   end
 end
