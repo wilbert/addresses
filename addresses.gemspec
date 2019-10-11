@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name        = "addresses"
   s.authors     = ["Wilbert Ribeiro", "Joice Taciana"]
   s.email       = ["wkelyson@gmail.com", "joicetaciana@gmail.com"]
-  s.version     = '2.0.1'
+  s.version     = '2.0.2'
   s.homepage    = "http://www.github.com/wilbert/addresses"
   s.summary     = "This engine allows create default addresses models for any usage."
   s.description = "Create Country, State, City, Neighborhood and a polymorphic model called Address that can be related as addessable."
