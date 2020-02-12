@@ -5,7 +5,7 @@ class CreateAddressesZipcodes < ActiveRecord::Migration[5.0]
     create_table :addresses_zipcodes do |t|
       t.string :street
       t.references :city, index: true
-      t.references :neighborhood, index: true
+      t.references :neighborhood, null: true, index: true
       t.string :number
 
       t.timestamps
