@@ -5,7 +5,7 @@ module Addresses
     attr_accessor :state_id
 
     belongs_to :city
-    belongs_to :neighborhood
+    belongs_to :neighborhood, optional: true
     has_many :addresses
 
     validates :number, :city_id, :state_id, presence: true
