@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    addresses (2.0.2)
+    addresses (2.0.4)
       rails (~> 6.0.0)
 
 GEM
@@ -94,12 +94,12 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.8.2)
-    mimemagic (0.3.3)
+    mimemagic (0.3.4)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.12.2)
     nio4r (2.5.2)
-    nokogiri (1.10.5)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     parallel (1.18.0)
     parser (2.6.5.0)
