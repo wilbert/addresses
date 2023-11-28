@@ -5,11 +5,11 @@ gemspec
 group :test, :development do
   gem 'pry-rails'
   gem 'pry-nav'
-  gem 'sqlite3',                    '1.4.1'
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rspec'
   gem 'rubocop-rails'
+  gem 'sqlite3'
 end
 
 group :test do
