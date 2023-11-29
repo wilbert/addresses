@@ -5,7 +5,8 @@ namespace :populate do
     desc 'Populate Brazilian Zipcodes'
     task zipcodes: [:environment] do
       puts 'Populating Zipcodes'
-      File.readlines("#{Addresses::Engine.root}/fixtures/zipcodes/br/ceps.txt").each do |line|
+      File.readlines("#{Addresses::Engine.root}/spec/fixtures/zipcodes/br/ceps.txt").each do |line|
+        puts line.to_s
         zipcode_number, city_state, neighborhood_name, street_name = line.split(/\t/)
 
         city_name = city_state.strip.split('/')[0]
@@ -18,8 +19,8 @@ namespace :populate do
         city = state.cities.find_or_create_by(name: city_name)
 
         unless neighborhood_name.blank?
-          neighborhood = city.neighborhoods.find_by(name: neighborhood_name.strip)
-          neighborhood = city.neighborhoods.create!(name: neighborhood_name) if neighborhood.nil?
+          puts neighborhood_name.inspect
+          neighborhood = city.neighborhoods.where('neighborhoods.name ilike ?', neighborhood_name.strip).first
         end
 
         zipcode = Addresses::Zipcode.new
