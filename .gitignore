@@ -10,7 +10,6 @@ spec/dummy/tmp/
 spec/dummy/.sass-cache
 spec/dummy/log/test.log
 spec/dummy/log/test.log
-spec/fixtures/zipcodes/**/*
 *.gem
 .ruby-version
 coverage/*
