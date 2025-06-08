@@ -5,7 +5,7 @@ require_dependency 'addresses/application_controller'
 module Addresses
   class StatesController < ApplicationController
     def index
-      @states = State.where(country_id: params[:country_id])
+      @states = State.all
       render json: @states
     end
 
