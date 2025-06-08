@@ -9,7 +9,7 @@ group :test, :development do
   gem 'rubocop-performance'
   gem 'rubocop-rspec'
   gem 'rubocop-rails'
-  gem 'sqlite3'
+  gem 'csv'
 end
 
 group :test do
