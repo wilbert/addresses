@@ -9,18 +9,17 @@ namespace :addresses do
   namespace :br do
     desc 'Populate all Brazilian address data (countries, states, cities, neighborhoods, and addresses)'
     task all: [:environment] do
-      Rake::Task['addresses:countries:populate'].invoke
+      # First ensure countries are loaded
+      Rake::Task['addresses:br:countries'].invoke
+      
+      # Then load Brazilian regions and states
+      Rake::Task['addresses:br:regions'].invoke
       Rake::Task['addresses:br:states'].invoke
+      
+      # Finally load the rest of the data
       Rake::Task['addresses:br:cities'].invoke
       Rake::Task['addresses:br:neighborhoods'].invoke
       Rake::Task['addresses:br:zipcodes'].invoke
-    end
-  end
-
-  namespace :countries do
-    desc 'Populate all countries in the world (names in pt-br)'
-    task populate: :environment do
-      Rake::Task['populate:countries'].invoke
     end
   end
 

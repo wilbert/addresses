@@ -8,7 +8,7 @@ namespace :addresses do
     task regions: :environment do
       puts 'Populating Brazilian regions...'
       
-      regions_path = File.expand_path('../../../../spec/fixtures/zipcodes/br/regions.csv.zst', __dir__)
+      regions_path = File.join(Addresses::Engine.root, 'spec/fixtures/zipcodes/br/regions.csv.zst')
       
       begin
         # Decompress the file if needed
@@ -50,8 +50,10 @@ namespace :addresses do
           end
         end
         
-        # Clean up the decompressed file
-        FileUtils.rm_f(csv_path) if csv_path.end_with?('.csv') && File.exist?(csv_path)
+        # Clean up the decompressed CSV file if it was created by us
+        if defined?(csv_path) && csv_path != regions_path
+          Addresses::CompressionUtils.cleanup_decompressed(csv_path)
+        end
         
         puts "\nRegions population complete!"
         puts "- Created: #{created}"

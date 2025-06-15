@@ -8,7 +8,7 @@ module Addresses
   class CityPopulator
     def self.run
       # Get the path to the cities.csv.zst file
-      cities_path = File.expand_path('../../../../spec/fixtures/zipcodes/br/cities.csv.zst', __dir__)
+      cities_path = File.join(Addresses::Engine.root, 'spec/fixtures/zipcodes/br/cities.csv.zst')
 
       begin
         # Check if cities.csv.zst exists, if not, run the extract task
@@ -17,16 +17,16 @@ module Addresses
           Rake::Task['extract:cities'].invoke
 
           # Compress the file after extraction
-          csv_path = File.expand_path('../../../../spec/fixtures/zipcodes/br/cities.csv', __dir__)
+          csv_path = File.join(Addresses::Engine.root, 'spec/fixtures/zipcodes/br/cities.csv')
           if File.exist?(csv_path)
             system("zstd -9 --rm -f #{csv_path.shellescape}") || raise("Failed to compress #{csv_path}")
           end
         end
 
-        # Decompress the file
+        # Decompress the file (keep the .zst file)
         puts "Decompressing cities data..."
         csv_path = cities_path.chomp('.zst')
-        system("zstd -d --rm -f #{cities_path.shellescape}") || raise("Failed to decompress #{cities_path}")
+        system("zstd -d -f #{cities_path.shellescape}") || raise("Failed to decompress #{cities_path}")
 
         # Verify the file was created
         unless File.exist?(csv_path)
@@ -76,28 +76,26 @@ module Addresses
         puts e.backtrace.join("\n") if ENV['DEBUG']
         false
       ensure
-        # Ensure we clean up the decompressed file
-        if defined?(csv_path) && csv_path && File.exist?(csv_path)
-          FileUtils.rm_f(csv_path)
-        end
+        # Clean up the decompressed CSV file (keep the .zst file)
+        FileUtils.rm_f(csv_path) if csv_path.end_with?('.csv') && File.exist?(csv_path)
       end
     end
   end
+end
 
-  namespace :addresses do
-    namespace :br do
-      desc 'Populate all Brazilian cities from cities.csv'
-      task :cities do
-        # Load Rails environment if available
-        begin
-          require File.expand_path('config/environment', Rails.root) if defined?(Rails)
-        rescue => e
-          puts "Warning: Could not load Rails environment - #{e.message}"
-        end
-
-        success = Addresses::CityPopulator.run
-        exit(1) unless success
+namespace :addresses do
+  namespace :br do
+    desc 'Populate all Brazilian cities from cities.csv'
+    task :cities do
+      # Load Rails environment if available
+      begin
+        require File.expand_path('config/environment', Rails.root) if defined?(Rails)
+      rescue => e
+        puts "Warning: Could not load Rails environment - #{e.message}"
       end
+      
+      success = Addresses::CityPopulator.run
+      exit(1) unless success
     end
   end
 end

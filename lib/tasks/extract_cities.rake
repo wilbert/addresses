@@ -8,9 +8,8 @@ namespace :extract do
   desc 'Extract unique cities from ceps.csv.zst to cities.csv'
   task :cities do
     begin
-      # Define the paths relative to the current directory (project root)
-      ceps_path = File.expand_path('spec/fixtures/zipcodes/br/ceps.csv.zst', __dir__)
-      ceps_path = File.expand_path('../../spec/fixtures/zipcodes/br/ceps.csv.zst', __dir__) unless File.exist?(ceps_path)
+      # Define the paths relative to the gem root
+      ceps_path = File.join(Addresses::Engine.root, 'spec/fixtures/zipcodes/br/ceps.csv.zst')
       
       unless File.exist?(ceps_path)
         puts "Error: Could not find ceps.csv.zst at #{ceps_path}"
@@ -18,8 +17,7 @@ namespace :extract do
       end
       
       # Define the output path for cities.csv
-      cities_dir = File.dirname(ceps_path)
-      cities_path = File.join(cities_dir, 'cities.csv')
+      cities_path = File.join(Addresses::Engine.root, 'spec/fixtures/zipcodes/br/cities.csv')
       
       puts "Decompressing ceps.csv.zst..."
       decompressed_path = ceps_path.chomp('.zst')

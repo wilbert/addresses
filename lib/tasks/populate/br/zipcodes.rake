@@ -10,7 +10,7 @@ namespace :addresses do
     task zipcodes: [:environment] do
       puts 'Populating Zipcodes'
 
-      csv_path = "#{Addresses::Engine.root}/spec/fixtures/zipcodes/br/ceps.csv"
+      csv_path = File.join(Addresses::Engine.root, 'spec/fixtures/zipcodes/br/ceps.csv.zst')
       batch = []
       batch_size = 5000
       upsert_columns = [:number, :city_id, :neighborhood_id, :street]
@@ -112,7 +112,7 @@ namespace :addresses do
         batch << zipcode_attrs
 
         if batch.size >= batch_size
-          Addresses::Zipcode.upsert_all(batch, unique_by: {columns: upsert_columns})
+          Addresses::Zipcode.upsert_all(batch, unique_by: { columns: upsert_columns })
           puts "[INFO] Upserted batch of #{batch.size} zipcodes."
           batch.clear
         end
@@ -127,16 +127,17 @@ namespace :addresses do
       puts "\rProgress: 100% (#{processed}/#{total})"
       # Insert any remaining zipcodes
       unless batch.empty?
-        Addresses::Zipcode.upsert_all(batch, unique_by: {columns: upsert_columns})
+        Addresses::Zipcode.upsert_all(batch, unique_by: { columns: upsert_columns })
         puts "[INFO] Upserted final batch of #{batch.size} zipcodes."
       end
-      
-      # Clean up the decompressed file
-      FileUtils.rm_f(decompressed_path) if defined?(decompressed_path) && File.exist?(decompressed_path)
-      rescue => e
-        puts "Error processing zipcodes: #{e.message}"
-        raise
+
+      # Clean up the decompressed CSV file if it was created by us
+      if defined?(decompressed_path) && decompressed_path.end_with?('.csv')
+        Addresses::CompressionUtils.cleanup_decompressed(decompressed_path)
       end
+    rescue => e
+      puts "Error processing zipcodes: #{e.message}"
+      raise
     end
   end
 end

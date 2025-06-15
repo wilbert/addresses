@@ -2,9 +2,9 @@
 # frozen_string_literal: true
 
 namespace :addresses do
-  namespace :countries do
+  namespace :br do
     desc 'Populate all countries in the world (names in pt-br)'
-    task populate: :environment do
+    task countries: :environment do
       # Add logic here to populate countries
       # Example:
       # Country.create!(name: 'Brazil', code: 'BR')
