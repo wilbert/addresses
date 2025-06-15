@@ -42,3 +42,7 @@ Copy migrations to your project and execute than to create tables in your databa
 
     rake addresses:install:migrations
     rake db:migrate
+
+Run the clean task to remove all address records from your database:
+
+    rake addresses:clean
