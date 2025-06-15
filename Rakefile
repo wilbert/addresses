@@ -1,10 +1,22 @@
-begin
-  require 'bundler/setup'
-rescue LoadError
-  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
-end
-
+require 'bundler/setup'
 require 'rdoc/task'
+
+# Load all rake tasks from lib/tasks
+Dir.glob('lib/tasks/**/*.rake').each { |r| load r }
+
+# Try to load Rails environment if available
+begin
+  require 'rails'
+  require 'rails/generators'
+  require 'rails/generators/rails/app/app_generator'
+  
+  # Load the Rails application and engine
+  require File.expand_path('test/dummy/config/application', __dir__)
+  ::Rails.application.initialize!
+  ::Rails.application.load_tasks
+rescue LoadError, StandardError => e
+  puts "Running in non-Rails mode: #{e.message}" if ENV['DEBUG']
+end
 
 RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'

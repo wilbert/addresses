@@ -1,10 +1,12 @@
 # encoding: utf-8
+# frozen_string_literal: true
+
 require 'csv'
 require 'io/console'
 
-namespace :populate do
+namespace :addresses do
   namespace :br do
-    desc 'Populate Brazilian Zipcodes'
+    desc 'Populate all Brazilian zipcodes from official CSV'
     task zipcodes: [:environment] do
       puts 'Populating Zipcodes'
 

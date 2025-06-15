@@ -52,18 +52,31 @@ rake db:migrate
 
 ## Usage
 
-### Populating Data
+## Rake Tasks
+
+### Database Population
 Populate tables with official data:
+
 ```sh
-bundle exec rake br:addresses         # Popula países, estados, cidades, bairros e endereços do Brasil
-bundle exec rake populate:countries   # Popula todos os países do mundo (nomes em pt-br)
-bundle exec rake br:states            # Popula todos os estados do Brasil
-bundle exec rake br:cities            # Popula todas as cidades do Brasil a partir do CSV oficial do IBGE
-bundle exec rake br:neighborhoods     # Popula todos os bairros do Brasil
-bundle exec rake populate:br:zipcodes          # Popula todos os CEPs do Brasil a partir do CSV oficial
+# Main population tasks
+bundle exec rake addresses:br:all            # Populates countries, states, cities, neighborhoods, and addresses for Brazil
+bundle exec rake addresses:countries:populate # Populates all countries in the world (names in pt-br)
+bundle exec rake addresses:br:states          # Populates all Brazilian states
+bundle exec rake addresses:br:cities          # Populates all Brazilian cities from official IBGE CSV
+bundle exec rake addresses:br:neighborhoods   # Populates all Brazilian neighborhoods
+bundle exec rake addresses:br:zipcodes        # Populates all Brazilian zipcodes from official CSV
+
+# Database maintenance
+bundle exec rake addresses:clean              # Cleans all address-related data (use with caution!)
 ```
 
-See other tasks in `lib/tasks/populate/` for more options.
+### Additional Tasks
+```sh
+# Extract neighborhoods from CEP data
+bundle exec rake addresses:br:neighborhoods:extract  # Extract unique neighborhoods to CSV
+```
+
+See other tasks in `lib/tasks/populate/` for more specific population options.
 
 ### Example: Querying Cities
 ```ruby
