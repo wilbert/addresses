@@ -17,3 +17,7 @@ coverage/*
 addresses.dump
 .history/*
 .idea/*
+
+# Ignore CSV files (we use compressed .zst files instead)
+*.csv
+!**/*.csv.zst

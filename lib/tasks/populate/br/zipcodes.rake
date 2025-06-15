@@ -130,6 +130,13 @@ namespace :addresses do
         Addresses::Zipcode.upsert_all(batch, unique_by: {columns: upsert_columns})
         puts "[INFO] Upserted final batch of #{batch.size} zipcodes."
       end
+      
+      # Clean up the decompressed file
+      FileUtils.rm_f(decompressed_path) if defined?(decompressed_path) && File.exist?(decompressed_path)
+      rescue => e
+        puts "Error processing zipcodes: #{e.message}"
+        raise
+      end
     end
   end
 end
