@@ -15,7 +15,7 @@ module Addresses
         
         result = Addresses::Zipcode.upsert_all(
           batch,
-          unique_by: :idx_zipcodes_on_number_city_neighborhood_street,
+          unique_by: :index_addresses_zipcodes_on_number_and_city_and_neighborhood_and_street,
           update_only: []  # Let the database handle timestamps
         )
         
