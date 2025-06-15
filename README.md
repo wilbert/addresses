@@ -55,12 +55,12 @@ rake db:migrate
 ### Populating Data
 Populate tables with official data:
 ```sh
-rake br:addresses         # Popula países, estados, cidades, bairros e endereços do Brasil
-rake populate:countries   # Popula todos os países do mundo (nomes em pt-br)
-rake br:states            # Popula todos os estados do Brasil
-rake br:cities            # Popula todas as cidades do Brasil a partir do CSV oficial do IBGE
-rake br:neighborhoods     # Popula todos os bairros do Brasil
-rake br:zipcodes          # Popula todos os CEPs do Brasil a partir do CSV oficial
+bundle exec rake br:addresses         # Popula países, estados, cidades, bairros e endereços do Brasil
+bundle exec rake populate:countries   # Popula todos os países do mundo (nomes em pt-br)
+bundle exec rake br:states            # Popula todos os estados do Brasil
+bundle exec rake br:cities            # Popula todas as cidades do Brasil a partir do CSV oficial do IBGE
+bundle exec rake br:neighborhoods     # Popula todos os bairros do Brasil
+bundle exec rake populate:br:zipcodes          # Popula todos os CEPs do Brasil a partir do CSV oficial
 ```
 
 See other tasks in `lib/tasks/populate/` for more options.
