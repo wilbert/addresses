@@ -1,5 +1,8 @@
 source "https://rubygems.org"
 
+# Override sqlite3 version for Rails 7.1.2 compatibility
+
+
 gemspec
 
 group :test, :development do
@@ -19,3 +22,5 @@ group :test do
   gem 'webmock'
   gem 'vcr'
 end
+
+gem "sqlite3", "~> 2.7"

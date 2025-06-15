@@ -37,37 +37,69 @@ module Addresses
         # Build a map of state acronyms to state IDs
         state_map = Addresses::State.where(country_id: 26).pluck(:acronym, :id).to_h
 
-        created = 0
-        updated = 0
-
-        puts "Populating cities from #{cities_path}..."
-
-        # Process each row in the cities CSV
+        puts "Populating cities from #{csv_path}..."
+        
+        # Prepare data for bulk upsert
+        cities_data = []
         CSV.foreach(csv_path, headers: true) do |row|
           state_acronym = row['state_acronym'].to_s.strip
           city_name = row['city_name'].to_s.strip
           state_id = state_map[state_acronym]
 
           next if state_id.nil? || city_name.empty?
-
-          # Find or create the city
-          city = Addresses::City.find_or_initialize_by(
+          
+          cities_data << {
             name: city_name,
-            state_id: state_id
-          )
-
-          if city.new_record?
-            city.save!
-            created += 1
-            print '.' if (created % 100).zero? # Show progress
-          else
-            updated += 1
-          end
+            state_id: state_id,
+            created_at: Time.current,
+            updated_at: Time.current
+          }
+          
+          # Print progress
+          print '.' if cities_data.size % 1000 == 0
         end
-
+        
+        # Remove duplicates (same name and state_id)
+        cities_data.uniq! { |c| [c[:name].downcase, c[:state_id]] }
+        
+        # Bulk upsert cities
+        # First ensure we have the latest data in case of concurrent updates
+        Addresses::City.connection.clear_query_cache
+        
+        # Group by unique name (case-insensitive) and state_id
+        cities_data.uniq! { |c| [c[:name].downcase, c[:state_id]] }
+        
+        # Use a transaction for atomicity
+        result = Addresses::City.transaction do
+          # First, update existing records to mark them as touched
+          existing = Addresses::City.where(
+            'LOWER(name) IN (?) AND state_id IN (?)',
+            cities_data.map { |c| c[:name].downcase }.uniq,
+            cities_data.map { |c| c[:state_id] }.uniq
+          )
+          
+          # Update timestamps for existing records
+          existing.update_all(updated_at: Time.current)
+          
+          # Insert only new records
+          new_records = cities_data.reject do |city|
+            existing.any? { |e| 
+              e.name.downcase == city[:name].downcase && e.state_id == city[:state_id] 
+            }
+          end
+          
+          # Insert new records in batches
+          new_records.each_slice(1000) do |batch|
+            Addresses::City.insert_all(batch) unless batch.empty?
+          end
+          
+          { updated_count: existing.count, created_count: new_records.size }
+        end
+        
         puts "\nCities population complete!"
-        puts "- Created: #{created}"
-        puts "- Updated: #{updated}"
+        puts "- Processed: #{cities_data.size} records"
+        puts "- Created: #{result[:created_count]} new records"
+        puts "- Updated: #{result[:updated_count]} existing records"
         puts "Total cities in database: #{Addresses::City.count}"
 
         true

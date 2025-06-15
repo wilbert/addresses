@@ -4,18 +4,30 @@ require 'rdoc/task'
 # Load all rake tasks from lib/tasks
 Dir.glob('lib/tasks/**/*.rake').each { |r| load r }
 
-# Try to load Rails environment if available
+# Load Rails environment if available
 begin
-  require 'rails'
-  require 'rails/generators'
-  require 'rails/generators/rails/app/app_generator'
+  # Load Rails environment
+  require File.expand_path('test/dummy/config/environment', __dir__)
   
-  # Load the Rails application and engine
-  require File.expand_path('test/dummy/config/application', __dir__)
-  ::Rails.application.initialize!
-  ::Rails.application.load_tasks
-rescue LoadError, StandardError => e
+  # Load Rails tasks
+  load 'rails/tasks/engine.rake'
+  
+  # Load the application's Rakefile
+  load 'rails/tasks/statistics.rake' rescue nil
+  
+  # Load all rake tasks from the engine
+  Dir[File.join(File.dirname(__FILE__), 'lib/tasks/**/*.rake')].each { |f| load f }
+  
+  # Load the dummy app's Rakefile if it exists
+  dummy_rakefile = File.expand_path('test/dummy/Rakefile', __dir__)
+  load dummy_rakefile if File.exist?(dummy_rakefile)
+  
+  # Load Rails tasks for the dummy app
+  Rails.application.load_tasks
+rescue LoadError => e
   puts "Running in non-Rails mode: #{e.message}" if ENV['DEBUG']
+rescue => e
+  puts "Error loading Rails: #{e.message}\n#{e.backtrace.join("\n")}" if ENV['DEBUG']
 end
 
 RDoc::Task.new(:rdoc) do |rdoc|

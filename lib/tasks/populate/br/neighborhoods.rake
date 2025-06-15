@@ -36,12 +36,11 @@ module Addresses
           city_map[key] = city.id
         end
 
-        created = 0
-        updated = 0
-
         puts "Populating neighborhoods from #{csv_path}..."
-
-        # Process each row in the neighborhoods CSV
+        
+        # Prepare data for bulk upsert
+        neighborhoods_data = []
+        
         CSV.foreach(csv_path, headers: true) do |row|
           state_acronym = row['state_acronym'].to_s.strip
           city_name = row['city_name'].to_s.strip
@@ -54,28 +53,93 @@ module Addresses
           city_id = city_map[city_key]
           
           unless city_id
-            puts "Warning: Could not find city #{city_name}, #{state_acronym}"
+            puts "Warning: Could not find city #{city_name}, #{state_acronym}" if ENV['DEBUG']
             next
           end
           
-          # Find or initialize the neighborhood
-          neighborhood = Addresses::Neighborhood.find_or_initialize_by(
+          # Prepare the data hash
+          data = {
             name: neighborhood_name,
-            city_id: city_id
-          )
+            city_id: city_id,
+            created_at: Time.current,
+            updated_at: Time.current
+          }
           
-          if neighborhood.new_record?
-            neighborhood.save!
-            created += 1
-            print '.' if (created % 1000).zero? # Show progress every 1000 records
-          else
-            updated += 1
+          # Only add unaccented_name if the column exists
+          if Addresses::Neighborhood.column_names.include?('unaccented_name')
+            data[:unaccented_name] = neighborhood_name.unicode_normalize(:nfd).gsub(/[^\x00-\x7F]/n, '').downcase
           end
+          
+          neighborhoods_data << data
+          
+          # Print progress
+          print '.' if neighborhoods_data.size % 1000 == 0
         end
-
+        
+        # Remove duplicates (same unaccented_name and city_id)
+        neighborhoods_data.uniq! { |n| [n[:unaccented_name], n[:city_id]] }
+        
+        # Process in smaller batches to avoid memory issues
+        batch_size = 5000
+        created_count = 0
+        updated_count = 0
+        total = neighborhoods_data.size
+        
+        puts "Processing #{total} neighborhood records in batches of #{batch_size}..."
+        
+        # Process each batch
+        neighborhoods_data.each_slice(batch_size).with_index do |batch, index|
+          # Clear query cache for each batch
+          Addresses::Neighborhood.connection.clear_query_cache
+          
+          # Process each record in the batch
+          batch.each do |neighborhood|
+            # Try to find existing record, using unaccented_name if available
+            existing = if Addresses::Neighborhood.column_names.include?('unaccented_name') && neighborhood[:unaccented_name]
+              Addresses::Neighborhood.find_by(
+                'unaccented_name = ? AND city_id = ?',
+                neighborhood[:unaccented_name],
+                neighborhood[:city_id]
+              )
+            else
+              Addresses::Neighborhood.find_by(
+                'LOWER(name) = ? AND city_id = ?',
+                neighborhood[:name].downcase,
+                neighborhood[:city_id]
+              )
+            end
+            
+            if existing
+              # Update timestamp if record exists
+              existing.touch
+              updated_count += 1
+            else
+              # Create new record if it doesn't exist
+              Addresses::Neighborhood.create!(
+                name: neighborhood[:name],
+                city_id: neighborhood[:city_id],
+                created_at: Time.current,
+                updated_at: Time.current
+              )
+              created_count += 1
+            end
+            
+            # Show progress every 1000 records
+            if (created_count + updated_count) % 1000 == 0
+              puts "Processed #{created_count + updated_count}/#{total} records..."
+            end
+          end
+          
+          # Force garbage collection every batch
+          GC.start if index % 10 == 0
+        end
+        
+        { created_count: created_count, updated_count: updated_count }
+        
         puts "\nNeighborhoods population complete!"
-        puts "- Created: #{created}"
-        puts "- Updated: #{updated}"
+        puts "- Processed: #{neighborhoods_data.size} records"
+        puts "- Created: #{result[:created_count]} new records"
+        puts "- Updated: #{result[:updated_count]} existing records"
         
         true
       rescue => e
@@ -92,10 +156,13 @@ module Addresses
   end
 end
 
+# lib/tasks/populate/br/neighborhoods.rake
 namespace :addresses do
   namespace :br do
     desc 'Populate all Brazilian neighborhoods from neighborhoods.csv.zst'
     task neighborhoods: :environment do
+      # Ensure the environment is loaded
+      require File.expand_path('spec/dummy/config/environment', Rails.root)
       success = Addresses::NeighborhoodPopulator.run
       exit(1) unless success
     end
