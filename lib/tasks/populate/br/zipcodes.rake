@@ -7,55 +7,82 @@ namespace :populate do
     desc 'Populate Brazilian Zipcodes'
     task zipcodes: [:environment] do
       puts 'Populating Zipcodes'
+
       csv_path = "#{Addresses::Engine.root}/spec/fixtures/zipcodes/br/ceps.csv"
       batch = []
       batch_size = 5000
       upsert_columns = [:number, :city_id, :neighborhood_id, :street]
+
+      country = Addresses::Country.find_or_create_by(acronym: 'BR') do |c|
+        c.name = 'Brasil'
+      end
+
+      region_map = {
+        'AC' => { name: 'Norte', acronym: 'N' },
+        'AP' => { name: 'Norte', acronym: 'N' },
+        'AM' => { name: 'Norte', acronym: 'N' },
+        'PA' => { name: 'Norte', acronym: 'N' },
+        'RO' => { name: 'Norte', acronym: 'N' },
+        'RR' => { name: 'Norte', acronym: 'N' },
+        'TO' => { name: 'Norte', acronym: 'N' },
+        'AL' => { name: 'Nordeste', acronym: 'NE' },
+        'BA' => { name: 'Nordeste', acronym: 'NE' },
+        'CE' => { name: 'Nordeste', acronym: 'NE' },
+        'MA' => { name: 'Nordeste', acronym: 'NE' },
+        'PB' => { name: 'Nordeste', acronym: 'NE' },
+        'PE' => { name: 'Nordeste', acronym: 'NE' },
+        'PI' => { name: 'Nordeste', acronym: 'NE' },
+        'RN' => { name: 'Nordeste', acronym: 'NE' },
+        'SE' => { name: 'Nordeste', acronym: 'NE' },
+        'DF' => { name: 'Centro-Oeste', acronym: 'CO' },
+        'GO' => { name: 'Centro-Oeste', acronym: 'CO' },
+        'MT' => { name: 'Centro-Oeste', acronym: 'CO' },
+        'MS' => { name: 'Centro-Oeste', acronym: 'CO' },
+        'ES' => { name: 'Sudeste', acronym: 'SE' },
+        'MG' => { name: 'Sudeste', acronym: 'SE' },
+        'RJ' => { name: 'Sudeste', acronym: 'SE' },
+        'SP' => { name: 'Sudeste', acronym: 'SE' },
+        'PR' => { name: 'Sul', acronym: 'S' },
+        'RS' => { name: 'Sul', acronym: 'S' },
+        'SC' => { name: 'Sul', acronym: 'S' }
+      }
+
       total = `wc -l < "#{csv_path}"`.to_i
       processed = 0
       last_percent = -1
       CSV.foreach(csv_path, headers: false, col_sep: ',') do |row|
-        # Assign columns based on the actual ceps.csv pattern
         zipcode_number, state_acronym, city_name, neighborhood_name, street_name = row.map(&:to_s)
+        zipcode_number = zipcode_number.strip
+        state_acronym = state_acronym.strip
+        city_name = city_name.strip
+        neighborhood_name = neighborhood_name.strip
+        street_name = street_name.strip
 
-        # Find or create state
-        state = Addresses::State.find_by(acronym: state_acronym)
-        unless state
-          state = Addresses::State.new(acronym: state_acronym, name: state_acronym)
-          if state.save
-            puts "[INFO] Created state: #{state_acronym}"
-          else
-            puts "[ERROR] Could not create state: #{state_acronym} - #{state.errors.full_messages.join(', ')}"
-            next
-          end
+        region_attrs = region_map[state_acronym]
+        region = nil
+        if region_attrs
+          region = country.regions.where('LOWER(name) = ?', region_attrs[:name].downcase).first
+          region ||= country.regions.create(name: region_attrs[:name], acronym: region_attrs[:acronym])
         end
 
-        # Only proceed if state is persisted
+        state = Addresses::State.where('LOWER(acronym) = ?', state_acronym.downcase).first
+        state ||= country.states.new(acronym: state_acronym, name: state_acronym, region: region)
         unless state.persisted?
-          puts "[ERROR] State not persisted: #{state_acronym}"
-          next
+          state.save
+          puts "[INFO] Created state: #{state_acronym}" if state.persisted?
         end
+        next unless state.persisted?
 
-        # Find or create city
-        city = state.cities.find_by(name: city_name)
+        city = state.cities.where('LOWER(name) = ?', city_name.to_s.strip.downcase).first
         unless city
           city = state.cities.create(name: city_name)
-          if city.persisted?
-            puts "[INFO] Created city: #{city_name} in state: #{state_acronym}"
-          else
-            puts "[ERROR] Could not create city: #{city_name} in state: #{state_acronym} - #{city.errors.full_messages.join(', ')}"
-            next
-          end
+          puts "[INFO] Created city: #{city_name} in state: #{state_acronym}" if city.persisted?
         end
 
         # Find or create neighborhood if present
         neighborhood = nil
         unless neighborhood_name.blank?
-          if city.neighborhoods.column_names.include?("name")
-            neighborhood = city.neighborhoods.where('LOWER(name) = ?', neighborhood_name.downcase).first
-          else
-            neighborhood = city.neighborhoods.to_a.find { |n| n.name.to_s.downcase == neighborhood_name.downcase }
-          end
+          neighborhood = city.neighborhoods.where('LOWER(name) = ?', neighborhood_name.to_s.strip.downcase).first
           unless neighborhood
             neighborhood = city.neighborhoods.create(name: neighborhood_name)
             puts "[INFO] Created neighborhood: #{neighborhood_name} in city: #{city_name}"
