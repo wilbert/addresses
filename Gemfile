@@ -23,4 +23,4 @@ group :test do
   gem 'vcr'
 end
 
-gem "sqlite3", "~> 1.4"
+gem "sqlite3" 

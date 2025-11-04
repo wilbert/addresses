@@ -25,8 +25,10 @@ Rails.backtrace_cleaner.remove_silencers!
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f; }
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  # Disable rspec-rails ActiveRecord integration to avoid legacy fixture hooks
+  config.use_active_record = false
+  # Disable transactional fixtures since ActiveRecord integration is off
+  config.use_transactional_fixtures = false
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
