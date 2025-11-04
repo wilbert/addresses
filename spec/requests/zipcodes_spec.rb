@@ -8,22 +8,24 @@ RSpec.describe Addresses::ZipcodesController, type: :request do
   let!(:zipcode) { create :zipcode, city: city, neighborhood: neighborhood, number: '05012010' }
 
   describe "GET /zipcodes" do
-    before { get '/addresses/zipcodes/05012010', params: { format: :json } }
+    before do
+      self.get '/addresses/zipcodes/05012010?format=json'
+    end
 
     it "should return an interview" do
       json = JSON.parse(response.body)
       expect(response.status).to be(200)
-      expect(json["id"]).to eq(zipcode.id)
-      expect(json["street"]).to eq(zipcode.street)
-      expect(json["neighborhood"]['id']).to eq(neighborhood.id)
-      expect(json["neighborhood"]['name']).to eq(neighborhood.name)
-      expect(json["city"]['id']).to eq(city.id)
-      expect(json["city"]['name']).to eq(city.name)
-      expect(json["state"]['id']).to eq(state.id)
-      expect(json["state"]['name']).to eq(state.name)
-      expect(json["country"]['id']).to eq(country.id)
-      expect(json["country"]['name']).to eq(country.name)
-      expect(json["number"]).to eq('05012010')
+      expect(json["zipcode"]["id"]).to eq(zipcode.id)
+      expect(json["zipcode"]["street"]).to eq(zipcode.street)
+      expect(json["zipcode"]["neighborhood"]['id']).to eq(neighborhood.id)
+      expect(json["zipcode"]["neighborhood"]['name']).to eq(neighborhood.name)
+      expect(json["zipcode"]["city"]['id']).to eq(city.id)
+      expect(json["zipcode"]["city"]['name']).to eq(city.name)
+      expect(json["zipcode"]["state"]['id']).to eq(state.id)
+      expect(json["zipcode"]["state"]['name']).to eq(state.name)
+      expect(json["zipcode"]["country"]['id']).to eq(country.id)
+      expect(json["zipcode"]["country"]['name']).to eq(country.name)
+      expect(json["zipcode"]["number"]).to eq('05012010')
     end
   end
 end

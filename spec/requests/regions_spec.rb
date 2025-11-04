@@ -6,7 +6,9 @@ RSpec.describe Addresses::RegionsController, type: :request do
   let!(:region) { create :region, country: country }
 
   describe "GET /regions" do
-    before { get '/addresses/regions', params: { country_id: country.id, format: "json" } }
+    before do
+      self.get '/addresses/regions?country_id=' + country.id.to_s + '&format=json'
+    end
 
     it "should return an list of regions" do
       json = JSON.parse(response.body)
@@ -18,7 +20,9 @@ RSpec.describe Addresses::RegionsController, type: :request do
   end
 
   describe "GET /regions/:id" do
-    before { get "/addresses/regions/#{region.id}", params: { format: "json" } }
+    before do
+      self.get "/addresses/regions/#{region.id}?format=json"
+    end
 
     it "should return a specific region" do
       json = JSON.parse(response.body)

@@ -6,7 +6,9 @@ RSpec.describe Addresses::NeighborhoodsController, type: :request do
   let!(:neighborhood) { create :neighborhood, city: city }
 
   describe "GET /neighborhoods" do
-    before { get '/addresses/neighborhoods', params: { city_id: city.id, format: "json" } }
+    before do
+      self.get '/addresses/neighborhoods?city_id=' + city.id.to_s + '&format=json'
+    end
 
     it "should return an interview" do
       json = JSON.parse(response.body)
@@ -17,7 +19,9 @@ RSpec.describe Addresses::NeighborhoodsController, type: :request do
   end
 
   describe "GET /neighborhoods/:id" do
-    before { get "/addresses/neighborhoods/#{neighborhood.id}", params: { format: "json" } }
+    before do
+      self.get "/addresses/neighborhoods/#{neighborhood.id}?format=json"
+    end
 
     it "should return a specific neighborhood" do
       json = JSON.parse(response.body)

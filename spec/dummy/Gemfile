@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'addresses', path: '../..'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+gem 'sqlite3', '~> 2.7'
 
 # Use Rails version compatible with the addresses gem
 gem 'rails', '~> 7.1.0'
