@@ -1,10 +1,6 @@
 # encoding: utf-8
 # frozen_string_literal: true
 
-# Load all Rake tasks from the populate directory and its subdirectories
-tasks_dir = File.expand_path('populate', __dir__)
-Dir.glob(File.join(tasks_dir, '**/*.rake')).each { |file| load file }
-
 namespace :addresses do
   namespace :br do
     desc 'Populate all Brazilian address data (countries, states, cities, neighborhoods, and addresses)'

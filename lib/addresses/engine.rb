@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'task_loader'
+
 module Addresses
   class Engine < ::Rails::Engine
     isolate_namespace Addresses
@@ -9,6 +11,10 @@ module Addresses
       g.factory_bot dir: 'spec/factories'
       g.assets false
       g.helper false
+    end
+
+    rake_tasks do
+      Addresses::TaskLoader.load!
     end
   end
 end

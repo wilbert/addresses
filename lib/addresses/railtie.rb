@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 require 'rails/railtie'
+require_relative 'task_loader'
 
 module Addresses
   class Railtie < ::Rails::Railtie
     rake_tasks do
-      Dir[File.join(__dir__, 'tasks/**/*.rake')].each { |task| load task }
+      Addresses::TaskLoader.load!
     end
   end
 end
