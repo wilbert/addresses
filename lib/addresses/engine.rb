@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'rails/engine'
 require_relative 'task_loader'
 
 module Addresses
