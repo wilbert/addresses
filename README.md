@@ -137,7 +137,7 @@ Skipped: 2 countries
 ```
 ```
 
-See other tasks in `lib/tasks/populate/` for more specific population options.
+See other tasks in `lib/addresses/tasks/populate/` for more specific population options.
 
 ### Example: Querying Cities
 ```ruby
@@ -283,4 +283,4 @@ Version 4.0 includes Rails 8 specific database optimizations:
 MIT License. See [MIT-LICENSE](MIT-LICENSE) for details.
 
 ---
-For more information, see the code in `lib/tasks/populate/` and the model documentation.
+For more information, see the code in `lib/addresses/tasks/populate/` and the model documentation.

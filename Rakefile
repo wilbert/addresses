@@ -1,8 +1,10 @@
 require 'bundler/setup'
 require 'rdoc/task'
 
-# Load all rake tasks from lib/tasks
-Dir.glob('lib/tasks/**/*.rake').each { |r| load r }
+TASK_GLOB = File.expand_path('lib/addresses/tasks/**/*.rake', __dir__)
+
+# Load all rake tasks from lib/addresses/tasks
+Dir.glob(TASK_GLOB).each { |r| load r }
 
 # Load Rails environment if available
 begin
@@ -16,7 +18,7 @@ begin
   load 'rails/tasks/statistics.rake' rescue nil
   
   # Load all rake tasks from the engine
-  Dir[File.join(File.dirname(__FILE__), 'lib/tasks/**/*.rake')].each { |f| load f }
+  Dir[TASK_GLOB].each { |f| load f }
   
   # Load the dummy app's Rakefile if it exists
   dummy_rakefile = File.expand_path('test/dummy/Rakefile', __dir__)

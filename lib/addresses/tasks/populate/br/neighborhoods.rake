@@ -156,7 +156,7 @@ module Addresses
   end
 end
 
-# lib/tasks/populate/br/neighborhoods.rake
+# lib/addresses/tasks/populate/br/neighborhoods.rake
 namespace :addresses do
   namespace :br do
     desc 'Populate all Brazilian neighborhoods from neighborhoods.csv.zst'
