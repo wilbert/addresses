@@ -16,11 +16,11 @@ group :test, :development do
 end
 
 group :test do
-  gem 'rails-controller-testing',   '1.0.4'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'webmock'
   gem 'vcr'
 end
 
-gem "sqlite3" 
+gem "sqlite3", '~> 1.7'
+gem 'pg', '~> 1.5'

@@ -10,31 +10,38 @@ A robust Ruby on Rails engine for managing international and Brazilian addresses
 
 ## Installation
 
+### Rails 8
+- Requires Ruby >= 3.0
+- Add to your Gemfile:
+  ```ruby
+  gem 'addresses', '~> 4.0'
+  ```
+
 ### Rails 7
 - Requires Ruby >= 2.7
 - Add to your Gemfile:
   ```ruby
-  gem 'addresses', '~> 3.0'
+  gem 'addresses', '~> 3.0', '< 4.0'
   ```
 
 ### Rails 6
 - Requires Ruby >= 2.3
 - Add to your Gemfile:
   ```ruby
-  gem 'addresses', '~> 2.0'
+  gem 'addresses', '~> 2.0', '< 3.0'
   ```
 
 ### Rails 5
 - Requires Ruby >= 2.2
 - Add to your Gemfile:
   ```ruby
-  gem 'addresses', '~> 1.0.0'
+  gem 'addresses', '~> 1.0.0', '< 2.0'
   ```
 
 ### Rails <= 4
 - Add to your Gemfile:
   ```ruby
-  gem 'addresses', '0.0.9'
+  gem 'addresses', '0.0.9', '< 1.0'
   ```
 
 ### Engine Mounting
@@ -58,6 +65,12 @@ rake db:migrate
 Populate tables with official data:
 
 ```sh
+# Rails 8 Countries Creation (NEW)
+bundle exec rake addresses:countries:create              # Create countries from predefined ISO data
+bundle exec rake addresses:countries:create --verbose   # Show detailed progress
+bundle exec rake addresses:countries:create --dry-run     # Preview without making changes
+bundle exec rake addresses:countries:create --limit=5     # Process only first 5 countries
+
 # Main population tasks
 bundle exec rake addresses:br:all            # Populates countries, states, cities, neighborhoods, and addresses for Brazil
 bundle exec rake addresses:countries:populate # Populates all countries in the world (names in pt-br)
@@ -74,6 +87,54 @@ bundle exec rake addresses:clean              # Cleans all address-related data 
 ```sh
 # Extract neighborhoods from CEP data
 bundle exec rake addresses:br:neighborhoods:extract  # Extract unique neighborhoods to CSV
+```
+
+### Rails 8 Countries Creation Task
+The new `addresses:countries:create` task provides automated country data creation with the following features:
+
+- **Automatic creation** of countries with ISO 3166-1 alpha-2 and alpha-3 codes
+- **Transaction-based processing** for data integrity
+- **Duplicate detection** and graceful handling
+- **Progress feedback** and error reporting
+- **Support for custom attributes** (capital, currency, phone code)
+- **Rails 8 optimized** with composite indexes and full-text search
+
+**Command Line Options:**
+- `--verbose` or `-v`: Show detailed progress and creation logs
+- `--dry-run` or `-d`: Preview what would be created without making database changes
+- `--limit=N` or `-l N`: Process only the first N countries from the seed data
+- `--help` or `-h`: Display help message with all available options
+
+**Example Usage:**
+```sh
+# Basic usage - create all countries
+bundle exec rake addresses:countries:create
+
+# With verbose output to see progress
+bundle exec rake addresses:countries:create --verbose
+
+# Dry run to preview changes
+bundle exec rake addresses:countries:create --dry-run
+
+# Process only first 10 countries
+bundle exec rake addresses:countries:create --limit=10
+
+# Combine options
+bundle exec rake addresses:countries:create --verbose --limit=5
+```
+
+**Example Output:**
+```
+Starting countries creation task...
+Options: {:verbose=>true, :limit=>10}
+Created: United States
+Created: Canada
+Progress: 2/10 (20.00%)
+...
+Task completed successfully!
+Created: 10 countries
+Skipped: 2 countries
+```
 ```
 
 See other tasks in `lib/tasks/populate/` for more specific population options.
@@ -181,16 +242,42 @@ bundle exec rspec
 Please include tests for new features and follow the existing code style.
 
 ## Versioning
-- Rails 7: `~> 3.0`
-- Rails 6: `~> 2.0`
-- Rails 5: `~> 1.0.0`
-- Rails <= 4: `0.0.9`
+- Rails 8: `~> 4.0`
+- Rails 7: `~> 3.0`, `< 4.0`
+- Rails 6: `~> 2.0`, `< 3.0`
+- Rails 5: `~> 1.0.0`, `< 2.0`
+- Rails <= 4: `0.0.9`, `< 1.0`
 
 ## Best Practices
 - Always run migrations after updating the gem
 - Use the provided rake tasks to ensure official and up-to-date data
 - For custom data, extend the models and tasks as needed
 - Keep your gem version in sync with your Rails version
+
+## Rails 8 Features
+
+### New in Version 4.0 (Rails 8 Support)
+- **Rails 8 compatibility** with backward compatibility for Rails 6.1+
+- **New countries:create task** for automated country data population
+- **Enhanced database performance** with composite indexes and full-text search
+- **Improved transaction handling** for bulk operations
+- **Better error handling** with detailed progress feedback
+- **ISO 3166-1 compliance** for country codes and names
+
+### Migration from Previous Versions
+When upgrading from version 3.x to 4.0:
+1. Update your Gemfile: `gem 'addresses', '~> 4.0'`
+2. Run `bundle update addresses`
+3. Run migrations: `rake db:migrate`
+4. Test your existing functionality
+5. Use the new `countries:create` task to populate country data
+
+### Database Optimizations
+Version 4.0 includes Rails 8 specific database optimizations:
+- Composite unique indexes on ISO codes for better performance
+- Full-text search indexes for country name queries
+- Generated columns for case-insensitive searches
+- Enhanced transaction management for bulk operations
 
 ## License
 MIT License. See [MIT-LICENSE](MIT-LICENSE) for details.

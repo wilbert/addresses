@@ -16,6 +16,11 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", '~> 8.0'
 
-  s.add_development_dependency 'rspec-rails',           '~> 5.1'
-  s.add_development_dependency 'factory_bot_rails',     '~> 5.1.1'
+  s.add_development_dependency 'rspec-rails',           '~> 6.0'
+  s.add_development_dependency 'factory_bot_rails',     '~> 6.4'
+  s.add_development_dependency 'simplecov',             '~> 0.22'
+  s.add_development_dependency 'shoulda-matchers',      '~> 5.3'
+  s.add_development_dependency 'webmock',               '~> 3.19'
+  s.add_development_dependency 'vcr',                   '~> 6.2'
+  s.add_development_dependency 'rails-controller-testing', '~> 1.0.5'
 end
