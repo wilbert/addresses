@@ -22,5 +22,6 @@ group :test do
   gem 'vcr'
 end
 
-gem "sqlite3", '~> 1.7'
+gem "sqlite3", '~> 2.7'
 gem 'pg', '~> 1.5'
+gem 'mutex_m', '~> 0.2'
